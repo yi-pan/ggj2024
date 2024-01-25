@@ -26,6 +26,7 @@ public class ObjectSelection : MonoBehaviour
     public GameObject ipad;
     public GameObject bottle;
     public GameObject bottle1;
+    public GameObject[] needToHide;
 
     [SerializeField]
     private Camera cctv_cam;
@@ -49,6 +50,8 @@ public class ObjectSelection : MonoBehaviour
     {
         cctv_cam.enabled = true;
         game_cam.enabled = false;
+        hand.SetActive(false);
+        canvas.SetActive(false);
     }
 
     void gameStart()
@@ -60,6 +63,10 @@ public class ObjectSelection : MonoBehaviour
         gameover = false;
         hand.SetActive(true);
         canvas.SetActive(true);
+        foreach(GameObject g in needToHide)
+        {
+            g.SetActive(false);
+        }
     }
 
     void gameEnd()
@@ -68,6 +75,10 @@ public class ObjectSelection : MonoBehaviour
         cctv_cam.enabled = true;
         hand.SetActive(false);
         canvas.SetActive(false);
+        foreach (GameObject g in needToHide)
+        {
+            g.SetActive(true);
+        }
     }
 
     void Update()
