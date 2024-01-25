@@ -19,16 +19,8 @@ public class ArrowDrop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gameOver)
-        {
-            // press space to start our game
-            if (Input.GetKeyDown("space"))
-            {
-                gameOver = false;
-            }
-        }
-        else
-        {
+        // game start
+        if (!gameOver) {
             // move arrows down
             transform.position -= new Vector3(0f, speed * Time.deltaTime * unit, 0f);
         }

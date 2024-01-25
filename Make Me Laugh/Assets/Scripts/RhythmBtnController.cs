@@ -17,11 +17,47 @@ public class RhythmButtonController : MonoBehaviour
     {
         image = gameObject.GetComponent<Image>();
         image.color = defaultColor;
+        if (this.name == "btn01")
+        {
+            this.keyToPress = KeyCode.LeftArrow;
+        }
+        if (this.name == "btn02")
+        {
+            this.keyToPress = KeyCode.UpArrow;
+        }
+        if (this.name == "btn03")
+        {
+            this.keyToPress = KeyCode.DownArrow;
+        }
+        if (this.name == "btn04")
+        {
+            this.keyToPress = KeyCode.RightArrow;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (RhythmGame.instance.inverseKeyCode)
+        {
+            if (this.name == "btn01")
+            {
+                this.keyToPress = KeyCode.RightArrow;
+            }
+            if (this.name == "btn02")
+            {
+                this.keyToPress = KeyCode.DownArrow;
+            }
+            if (this.name == "btn03")
+            {
+                this.keyToPress = KeyCode.UpArrow;
+            }
+            if (this.name == "btn04")
+            {
+                this.keyToPress = KeyCode.LeftArrow;
+            }
+        }
+               
         if (Input.GetKeyDown(keyToPress))
         {
             image.color = pressedColor;
