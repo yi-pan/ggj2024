@@ -18,6 +18,10 @@ public class ObjectSelection : MonoBehaviour
     private float scale4 = 0.3f;
     private bool gameover = true;
     private float time = 0.0f;
+    private bool door_open = false;
+    private float changePerSecond;
+    private float elevFloor = 1;
+
     public AudioSource audioSource;
     public AudioClip[] audioClipArray;
     public GameObject hand;
@@ -27,6 +31,15 @@ public class ObjectSelection : MonoBehaviour
     public GameObject bottle;
     public GameObject bottle1;
     public GameObject[] needToHide;
+    public GameObject itemsOnFloor;
+    public GameObject firstFloor;
+    public GameObject sixFloor;
+    public GameObject door;
+    public GameObject UICanvas;
+    public GameObject elevPanel;
+    public GameObject timeline;
+    public GameObject timeline2;
+    public GameObject child;
 
     [SerializeField]
     private Camera cctv_cam;
@@ -40,6 +53,8 @@ public class ObjectSelection : MonoBehaviour
     private TMP_Text _timer;
     [SerializeField]
     private TMP_Text _success;
+    [SerializeField]
+    private TMP_Text _elevScreen;
 
     AudioClip RandomClip()
     {
@@ -50,19 +65,44 @@ public class ObjectSelection : MonoBehaviour
     {
         cctv_cam.enabled = true;
         game_cam.enabled = false;
+
+        firstFloor.SetActive(true);
+        sixFloor.SetActive(false);
+
+        itemsOnFloor.SetActive(false);
         hand.SetActive(false);
         canvas.SetActive(false);
+
+        _elevScreen.text = "1"; // elev screen text
+        changePerSecond = 1; // floor number change speed
+
+        // here to play cutscene
+        intoElevator();
     }
 
-    void gameStart()
+    void intoElevator()
     {
+        // after playing the initial cutscene, game start
+        timeline.GetComponent<TimelinePlayer>().StartTimeline();
+        // gameStart();
+    }
+
+    public void gameStart()
+    {
+        // activate game cam
         game_cam.enabled = true;
         cctv_cam.enabled = false;
-
+        
+        // reset time and score
         time = 0;
+        click_num = 0;
+        miss_num = 0;
         gameover = false;
+
         hand.SetActive(true);
         canvas.SetActive(true);
+
+        // hide those between game panel and cam
         foreach(GameObject g in needToHide)
         {
             g.SetActive(false);
@@ -71,32 +111,101 @@ public class ObjectSelection : MonoBehaviour
 
     void gameEnd()
     {
-        game_cam.enabled = false;
-        cctv_cam.enabled = true;
+        // play animation to activate 
+        elevPanel.GetComponent<Animator>().SetBool("play", true);
+        child.GetComponent<Animator>().SetBool("isExcited", true);
+        firstFloor.SetActive(false);
+        sixFloor.SetActive(true);
+
         hand.SetActive(false);
         canvas.SetActive(false);
-        foreach (GameObject g in needToHide)
+    }
+
+    void itemsDrop()
+    {
+        foreach (Transform item in itemsOnFloor.transform)
         {
-            g.SetActive(true);
+            item.GetComponent<Rigidbody>().useGravity = false;
         }
+        itemsOnFloor.SetActive(true);
+        if (!itemsOnFloor.GetComponent<AnimationEvent>().animFinished)
+        {
+            itemsOnFloor.GetComponent<Animator>().SetBool("play", true);
+        }
+    }
+
+    void changeElevScreen()
+    {
+        _elevScreen.text = ""+ Mathf.RoundToInt(elevFloor);
+    }
+
+    void npcCry()
+    {
+        UICanvas.GetComponent<uiController>().showEmoji = true;
     }
 
     void Update()
     {
+        // after playing the initial cutscene, game start
         if (Input.GetKeyDown("space"))
         {
             gameStart();
         }
+
+        // after elevator panel animation finished
+        if (elevPanel.GetComponent<AnimationEvent>().animFinished) {
+            // switch camera and activate hidden objects 
+            game_cam.enabled = false;
+            cctv_cam.enabled = true;
+            foreach (GameObject g in needToHide)
+            {
+                g.SetActive(true);
+            }
+            // items flying and dropping
+            itemsDrop();
+            // start to change elevator screen
+            changeElevScreen();
+
+            // elevator number grow 
+            if (Mathf.CeilToInt(elevFloor) <= 6)
+            {
+                elevFloor = elevFloor + changePerSecond * Time.deltaTime;
+            }
+
+            // people crying
+            npcCry();
+        }
+
+        // if itemDrop is finished, activate gravity
+        if (itemsOnFloor.GetComponent<AnimationEvent>().animFinished)
+        {
+            foreach (Transform item in itemsOnFloor.transform)
+            {
+                item.GetComponent<Rigidbody>().useGravity = true;
+            }
+        }
+
+        // if elevator floor number reach 6, and door is closed, open the door
+        if (Mathf.CeilToInt(elevFloor) > 6 & !door_open)
+        {
+            door.GetComponent<Animation>().Play("door_open");
+            door_open = true;
+            timeline2.GetComponent<TimelinePlayer>().StartTimeline();
+        }
+
+
+        //if (Input.GetKeyDown("space"))
+        //{
+        //    gameStart();
+        //}
         
-       
+        // end of the game
         if (success_count == 9)
         {
+            // play a success visual effect???
             _success.gameObject.SetActive(true);
             gameover = true;
-            if (Input.GetKeyDown("space"))
-            {
-                gameEnd();
-            }
+            gameEnd();
         }
         
         // timer
