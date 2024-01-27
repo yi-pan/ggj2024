@@ -21,8 +21,10 @@ public class TimelinePlayer : MonoBehaviour
 
     public void StopTimeline()
     {
+        //Debug.Log("cutscene end");
         director.Stop();
     }
+
     // Update is called once per frame
     void Update()
     {

@@ -41,6 +41,8 @@ public class ObjectSelection : MonoBehaviour
     public GameObject timeline2;
     public GameObject child;
 
+    public GameObject[] npcs;
+
     [SerializeField]
     private Camera cctv_cam;
     [SerializeField]
@@ -142,6 +144,10 @@ public class ObjectSelection : MonoBehaviour
     void npcCry()
     {
         UICanvas.GetComponent<uiController>().showEmoji = true;
+        foreach(GameObject npc in npcs)
+        {
+            npc.GetComponent<NpcController>().Cry();
+        }
     }
 
     void Update()

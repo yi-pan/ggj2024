@@ -10,16 +10,13 @@ public class ArrowDrop : MonoBehaviour
     private float speed;
     public bool gameOver = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         speed = bpm / 60f;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // game start
         if (!gameOver) {
             // move arrows down
             transform.position -= new Vector3(0f, speed * Time.deltaTime * unit, 0f);

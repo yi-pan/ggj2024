@@ -6,7 +6,7 @@ public class NpcController : MonoBehaviour
 {
     Animator npcAnim;
     AudioSource crying;
-    public GameObject elevPanel;
+    public bool sitBool = false;
 
     private void Awake()
     {
@@ -19,16 +19,38 @@ public class NpcController : MonoBehaviour
         npcAnim.SetBool("isCrying", false);
     }
 
+    public void Cry()
+    {
+        if (!crying.isPlaying)
+        {
+            crying.Play();
+        }
+        npcAnim.SetBool("isCrying", true);
+    }
+
+    public void StopCry()
+    {
+        if (crying.isPlaying)
+        {
+            crying.Stop();
+        }
+        npcAnim.SetBool("isCrying", false);
+    }
+
+
+    public void Sit()
+    {
+        npcAnim.SetBool("isSitting", true);
+    }
+
+    public void Stand()
+    {
+        npcAnim.SetBool("isSitting", false);
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (elevPanel.GetComponent<AnimationEvent>().animFinished)
-        {
-            if (!crying.isPlaying)
-            {
-                crying.Play();
-            }
-            npcAnim.SetBool("isCrying", true);
-        }
+        npcAnim.SetBool("isSitting", sitBool);
     }
 }

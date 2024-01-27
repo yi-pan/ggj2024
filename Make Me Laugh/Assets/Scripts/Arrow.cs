@@ -6,12 +6,11 @@ public class Arrow : MonoBehaviour
 {
     public bool canBePressed;
     public KeyCode keyToPress;
-    //public bool inverseKeyCode = false;
 
 
-    // Start is called before the first frame update
     void Start()
     {
+        // normal key code
         if(this.name == "arrowL")
         {
             this.keyToPress = KeyCode.LeftArrow;
@@ -30,36 +29,41 @@ public class Arrow : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
+    void inverseKeyCode()
+    {
+        if (this.name == "arrowL")
+        {
+            this.keyToPress = KeyCode.RightArrow;
+        }
+        if (this.name == "arrowR")
+        {
+            this.keyToPress = KeyCode.LeftArrow;
+        }
+        if (this.name == "arrowUp")
+        {
+            this.keyToPress = KeyCode.DownArrow;
+        }
+        if (this.name == "arrowDown")
+        {
+            this.keyToPress = KeyCode.UpArrow;
+        }
+    }
+
     void Update()
     {
         if (RhythmGame.instance.inverseKeyCode)
         {
-            if (this.name == "arrowL")
-            {
-                this.keyToPress = KeyCode.RightArrow;
-            }
-            if (this.name == "arrowR")
-            {
-                this.keyToPress = KeyCode.LeftArrow;
-            }
-            if (this.name == "arrowUp")
-            {
-                this.keyToPress = KeyCode.DownArrow;
-            }
-            if (this.name == "arrowDown")
-            {
-                this.keyToPress = KeyCode.UpArrow;
-            }
+            inverseKeyCode();
         }
+        // if get the right key
         if(Input.GetKeyDown(keyToPress))
         {
+            // if this is the right moment
             if(canBePressed)
             {
                 canBePressed = false;
                 gameObject.SetActive(false);
                 RhythmGame.instance.ArrowHit();
-                
             }
         }
     }
@@ -78,7 +82,6 @@ public class Arrow : MonoBehaviour
         {
             canBePressed = false;
             RhythmGame.instance.ArrowMiss();
-            
         }
     }
 }
