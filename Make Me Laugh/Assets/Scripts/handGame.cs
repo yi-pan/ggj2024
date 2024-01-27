@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class ObjectSelection : MonoBehaviour
 {
@@ -61,6 +62,11 @@ public class ObjectSelection : MonoBehaviour
     AudioClip RandomClip()
     {
         return audioClipArray[Random.Range(0, audioClipArray.Length)];
+    }
+
+    public void changeScene()
+    {
+        SceneManager.LoadScene("subway");
     }
 
     void Start()
