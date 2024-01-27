@@ -1,12 +1,4 @@
-<<Kid crying no-stop>>
-思维bubble: “Oh my Oh my GOD.”
-“please be quiet..”
-“Why is this kid alone on the plane??”
-“poor kid...”
-kid: <<looking towards you, tears falling off>>
-a: ...
-kid: mY rObOt is BROKENNNNNNNN
-a:... <<trying to look away>>
-kid: <<cries even louder>>
-a: ... <<signs>>
-it seems like you have to help them fix this robot, what to do?
+<<you hear a kid crying>>
+character:nonono
+cry_kid:my toy is broken
+happy_kid:mine is not
