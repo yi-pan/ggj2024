@@ -2306,7 +2306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
 --- !u!82 &202705576
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5343,7 +5343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
 --- !u!82 &511484641
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5634,7 +5634,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 3cf6b15f74b7d4e4380675d875d58509, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -5695,6 +5695,18 @@ MonoBehaviour:
         - m_Target: {fileID: 561385325}
           m_TargetAssemblyTypeName: TimelinePlayer, Assembly-CSharp
           m_MethodName: StopTimeline
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1212963079}
+          m_TargetAssemblyTypeName: ObjectSelection, Assembly-CSharp
+          m_MethodName: changeScene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6214,7 +6226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
 --- !u!82 &621636517
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10282,7 +10294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
 --- !u!82 &890475600
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10566,7 +10578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
 --- !u!82 &894006790
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13297,7 +13309,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
 --- !u!82 &1179785377
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13581,7 +13593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
 --- !u!82 &1211956639
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17505,7 +17517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
 --- !u!82 &1665142673
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20202,7 +20214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
 --- !u!82 &1909947121
 AudioSource:
   m_ObjectHideFlags: 0
