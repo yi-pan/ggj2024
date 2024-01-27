@@ -20,6 +20,10 @@ public class uiController : MonoBehaviour
         thought.SetActive(false);
     }
 
+    public void ShowDialogue(GameObject dialogue)
+    {
+        dialogue.SetActive(true);
+    }
     // Update is called once per frame
     void Update()
     {

@@ -69,4 +69,10 @@ public class RhythmButtonController : MonoBehaviour
             image.transform.localScale = new Vector3(1, 1, 1);
         }
     }
+
+    public void Reset()
+    {
+        image.color = defaultColor;
+        image.transform.localScale = new Vector3(1, 1, 1);
+    }
 }

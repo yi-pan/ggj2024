@@ -7,11 +7,21 @@ public class RhythmGame : MonoBehaviour
 {
     public AudioSource music;
     public bool startPlaying;
-    public ArrowDrop arrowDrop;
     public static RhythmGame instance;
     public AudioSource[] sounds;
     public AudioSource bass;
     public GameObject arrows;
+    public GameObject arrows2;
+    public GameObject gameCanvas;
+    public GameObject[] btns;
+    public GameObject[] npcs;
+    public GameObject timeline;
+    public GameObject timeline2;
+
+    [SerializeField]
+    private Camera cutscene_cam;
+    [SerializeField]
+    private Camera game_cam;
 
     [SerializeField]
     private TMP_Text _hit;
@@ -22,78 +32,201 @@ public class RhythmGame : MonoBehaviour
     public bool inverseKeyCode = false;
     private int hit_count = 0;
     private int miss_count = 0;
+    private ArrowDrop arrowDrop1;
+    private ArrowDrop arrowDrop2;
+
     // Start is called before the first frame update
     void Start()
     {
-        arrowsPos = arrows.transform.position;
+        // PLAY CUTSCENE 01
+        intoSubway();
+        //cutscene_cam.enabled = true;
+        //game_cam.enabled = false;
         instance = this;
-        arrowDrop.gameOver = true;
         startPlaying = false;
         arrows.SetActive(false);
+        gameCanvas.SetActive(false);
+        // ArrowDrop
+        arrowDrop1 = arrows.GetComponent<ArrowDrop>();
+        arrowDrop2 = arrows2.GetComponent<ArrowDrop>();
+        arrowDrop1.gameOver = true;
+        arrowDrop2.gameOver = true;
+    }
+
+    void intoSubway()
+    {
+        // play the first cutscene
+        timeline.GetComponent<TimelinePlayer>().StartTimeline();
+    }
+
+    void outSubway()
+    {
+        // play the second cutscene
+        timeline.GetComponent<TimelinePlayer>().StopTimeline();
+        timeline2.GetComponent<TimelinePlayer>().StartTimeline();
+    }
+
+    public void gameStart()
+    {
+        //cutscene_cam.enabled = false;
+        //game_cam.enabled = true;
+        arrows.SetActive(true);
+        arrows2.SetActive(false);
+        gameCanvas.SetActive(true);
+        arrowDrop1.gameOver = false;
+        startPlaying = true;
+        music.Play();
+    }
+
+    public void gameRestart()
+    {
+        // reset button size and color
+        foreach(GameObject btn in btns)
+        {
+            btn.GetComponent<RhythmButtonController>().Reset();
+        }
+        // slow down the game
+        arrowDrop2.unit = 100;
+        arrowDrop2.gameOver = false;
+        arrowDrop1.gameOver = true;
+        if (music.isPlaying)
+        {
+            music.Stop();
+        }
+        if (bass.isPlaying)
+        {
+            bass.Stop();
+        }
+        arrows.SetActive(false);
+        hit_count = 0;
+        miss_count = 0;
+        arrows2.SetActive(true);
+        music.Play();
+    }
+
+    public void changeScene()
+    {
+        Debug.Log("change scene");
+    }
+
+    void gameEnd()
+    {
+        //foreach(GameObject npc in npcs)
+        //{
+        //    npc.GetComponent<NpcController>().StopCry();
+        //}
+        startPlaying = false;
+        if (bass.isPlaying)
+        {
+            bass.Stop();
+        }
+        if (music.isPlaying)
+        {
+            music.Stop();
+        }
+        gameCanvas.SetActive(false);
+
+        // CUTSCENE 2 START
+        outSubway();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!startPlaying)
-        {
-            if (Input.GetKeyDown("space"))
-            {
-                arrows.SetActive(true);
-                arrowDrop.gameOver = false;
-                startPlaying = true;
-                music.Play();
-            }
-        }
+        // Game Start
+        //if (!startPlaying)
+        //{
+        //    if (Input.GetKeyDown("space"))
+        //    {
+        //        gameStart();
+        //    }
+        //}
+
+        // track hit and miss
         _hit.text = "Good: " + hit_count;
         _miss.text = "Miss: " + miss_count;
-        if (!inverseKeyCode)
-        {
-            // now inverse the key code, restart the game
-            if (Input.GetKeyDown("1"))
-            {
-                inverseKeyCode = true;
-                if (music.isPlaying)
-                {
-                    music.Stop();
-                }
-                if (bass.isPlaying)
-                {
-                    bass.Stop();
-                }
-                arrows.SetActive(false);
-                foreach (Arrow arrow in arrows.GetComponentsInChildren<Arrow>())
-                {
-                    arrow.gameObject.SetActive(true);
-                }
-                
-                // restart the game
-                hit_count = 0;
-                miss_count = 0;
-                arrows.SetActive(true);
 
-                arrows.transform.position = arrowsPos;
-                music.Play();
+        // change pace
+        if (inverseKeyCode)
+        {
+            if(hit_count == 10)
+            {
+                arrowDrop2.unit = 140;
+            }
+            if(hit_count == 20)
+            {
+                arrowDrop2.unit = 160;
+            }
+            if(hit_count == 30)
+            {
+                arrowDrop2.unit = 180;
+            }
+            if(hit_count == 50)
+            {
+                arrowDrop2.unit = 200;
+            }
+            
+
+            // make more npc cry gradually
+            if (hit_count + miss_count == 10)
+            {
+                npcs[0].GetComponent<NpcController>().Cry();
+            }
+            if (hit_count + miss_count == 20)
+            {
+                npcs[1].GetComponent<NpcController>().Cry();
+            }
+            if (hit_count + miss_count == 30)
+            {
+                npcs[2].GetComponent<NpcController>().Cry();
+                npcs[3].GetComponent<NpcController>().Cry();
+            }
+            if (hit_count + miss_count == 40)
+            {
+                npcs[4].GetComponent<NpcController>().Cry();
+                npcs[5].GetComponent<NpcController>().Cry();
+            }
+            if (hit_count + miss_count == 50)
+            {
+                npcs[6].GetComponent<NpcController>().Cry();
+                npcs[7].GetComponent<NpcController>().Cry();
+            }
+            if (hit_count + miss_count == 60)
+            {
+                npcs[8].GetComponent<NpcController>().Cry();
+                npcs[9].GetComponent<NpcController>().Cry();
             }
         }
-        // game over
-        if (hit_count + miss_count == 49)
+
+        // if key code is not inversed. left is left, right is right
+        if (!inverseKeyCode)
         {
-            startPlaying = false;
-            if(bass.isPlaying)
+            // now inverse the key code and restart the game
+            // HERE IS WHERE CHILD DIALOGUE GO; DIALOGUE FINISH -> INVERSE KEY
+            if (hit_count == 10 | (hit_count + miss_count == 60))
             {
-                bass.Stop();
+                // child dialogue: "this is so boring! let's make some noise!"
+                inverseKeyCode = true;
+                // dialogue
+                arrowDrop1.unit = 0;
+                gameRestart();
             }
-            if (music.isPlaying)
-            {
-                music.Stop();
-            }
+        }
+
+
+        // Game Over
+        if (hit_count + miss_count == 60 && startPlaying)
+        {
+            gameEnd();
+            // PLAY NEXT CUTSCENE
         }
     }
 
+    // arrow hit
     public void ArrowHit()
     {
         hit_count++;
+        // if key code is inversed, play a stupid sound effect
         if (inverseKeyCode)
         {
             int randNum = Random.Range(0, sounds.Length);
@@ -101,23 +234,27 @@ public class RhythmGame : MonoBehaviour
         }
         else
         {
+            // play bass sound
             if (!bass.isPlaying)
             {
                 bass.Play();
             }
         }
-        //Debug.Log("Hit");
     }
 
+    // arrow miss
     public void ArrowMiss()
     {
         miss_count++;
-        //Debug.Log("Miss");
+        // if key code is not inversed, pause the bass if miss
         if (!inverseKeyCode)
         {
-            if (bass.isPlaying)
+            if (bass != null)
             {
-                bass.Pause();
+                if (bass.isPlaying)
+                {
+                    bass.Pause();
+                }
             }
         }
     }
