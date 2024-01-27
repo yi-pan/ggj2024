@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Playables;
 
 public class dialogueSystem : MonoBehaviour
 {
@@ -12,9 +13,13 @@ public class dialogueSystem : MonoBehaviour
     GameObject happy_kid;
     GameObject speaking_character;
     TMP_Text textContent;
-    GameObject textDisplay;
+    public GameObject textDisplay;
+    //public handGame handGame;
     int dialogue_index = 0;
     string[] speaker_and_line = new string[0];
+    public GameObject handGame;
+
+    //public PlayableDirector timeline;
 
 
     void Start()
@@ -30,9 +35,9 @@ public class dialogueSystem : MonoBehaviour
         speaking_character = main_character;
 
         //find the dialogue
-        textDisplay = GameObject.Find("text");
+        //textDisplay = GameObject.Find("text");
         textContent = textDisplay.GetComponent<TMP_Text>();
-        Debug.Log(textDisplay);
+        //Debug.Log(textDisplay);
         Debug.Log(textContent);
 
         string text = textFile.text;  //this is the content as string
@@ -47,10 +52,14 @@ public class dialogueSystem : MonoBehaviour
     {
         
         //Debug.Log(dialogue[dialogue_index]);
-        if (Input.GetKeyUp(KeyCode.Space) && (dialogue_index < dialogue.Length)) {
+        if (Input.GetKeyUp(KeyCode.A) && (dialogue_index < dialogue.Length)) {
             general_speak(dialogue[dialogue_index]);
-        } else if (Input.GetKeyUp(KeyCode.Space) && dialogue_index >= dialogue.Length)
+        } else if (Input.GetKeyUp(KeyCode.A) && dialogue_index >= dialogue.Length)
         {
+            handGame.GetComponent<ObjectSelection>().gameStart();
+            //timeline.Play();
+            Debug.Log("dialogue finish");
+
             gameObject.SetActive(false);
         }
         
@@ -67,6 +76,8 @@ public class dialogueSystem : MonoBehaviour
 
         speaking_character.SetActive(true);
         textContent.text = speaker_and_line[1];
+        Debug.Log(speaker_and_line[1]);
+
     }
 
     void general_speak(string current_sentence)

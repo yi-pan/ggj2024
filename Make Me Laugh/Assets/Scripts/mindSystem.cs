@@ -13,6 +13,10 @@ public class mindSystem : MonoBehaviour
     public float MaxX;
     public float MinY;
     public float MaxY;
+    float offset_x = 0;
+    float offset_y = 0;
+    float offset_increment_x;
+    float offset_increment_y;
 
 
     void Start()
@@ -25,6 +29,9 @@ public class mindSystem : MonoBehaviour
 
         string text = textFile.text;  //this is the content as string
         mind_dialogue = text.Split("\n");
+        offset_increment_x = (MaxX - MinX) / (mind_dialogue.Length);
+        Debug.Log(offset_increment_x);
+        offset_increment_y = (MaxY - MinY) / mind_dialogue.Length;
 
         for (int i = 0; i < mind_dialogue.Length; i++)
         {
@@ -43,12 +50,14 @@ public class mindSystem : MonoBehaviour
 
     void SpawnBubble(string thought)
     {
-        float x = Random.Range(MinX, MaxX);
+        float x = Random.Range(MinX + offset_x, MinX + offset_x + offset_increment_x);
         float y = Random.Range(MinY, MaxY);
 
         GameObject newSpawn = Instantiate(mind_bubble, new Vector3(x, y, 0), Quaternion.identity);
-        newSpawn.transform.parent = gameObject.transform;
+        newSpawn.transform.SetParent(gameObject.transform);
         TMP_Text text = newSpawn.transform.GetChild(0).gameObject.GetComponent<TMP_Text>();
         text.text = thought;
+        offset_x += offset_increment_x;
+        offset_y += offset_increment_y;
     }
 }

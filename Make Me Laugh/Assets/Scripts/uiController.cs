@@ -8,14 +8,14 @@ public class uiController : MonoBehaviour
     public bool showDialogue = false;
     public bool showThought = false;
 
-    public GameObject dialogue;
+    //public GameObject dialogue;
     public GameObject emoji;
     public GameObject thought;
 
     // Start is called before the first frame update
     void Start()
     {
-        dialogue.SetActive(false);
+        //dialogue.SetActive(false);
         emoji.SetActive(false);
         thought.SetActive(false);
     }
@@ -27,7 +27,8 @@ public class uiController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (showDialogue)
+        /*if (showDialogue)
+
         {
             dialogue.SetActive(true);
         }
@@ -35,7 +36,7 @@ public class uiController : MonoBehaviour
         {
             dialogue.SetActive(false);
         }
-
+        */
         if (showEmoji)
         {
             emoji.SetActive(true);

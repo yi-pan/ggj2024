@@ -25,6 +25,17 @@ public class TimelinePlayer : MonoBehaviour
         director.Stop();
     }
 
+    public void PauseAndDialogue(GameObject dialogue)
+    {
+        //Debug.Log("cutscene end");
+        director.Pause();
+        dialogue.SetActive(true);
+    }
+
+    public void SpawnMindBubble(GameObject mind_bubble_spawn)
+    {
+        mind_bubble_spawn.SetActive(true);
+    }
     // Update is called once per frame
     void Update()
     {
