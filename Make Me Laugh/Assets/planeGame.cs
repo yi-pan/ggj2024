@@ -38,6 +38,12 @@ public class planeGame : MonoBehaviour
     public Camera game_cam;
     public Camera coin_cam;
 
+    public GameObject dialogue_end;
+    public GameObject coin_teach;
+    public GameObject juice_teach;
+    public GameObject glasses_teach;
+    public GameObject candy_teach;
+
     // object and animation
     public GameObject coin;
     public GameObject juice;
@@ -86,8 +92,8 @@ public class planeGame : MonoBehaviour
         robot_fnished.SetActive(false);
 
         // play first cutscene
-        // wakeUp();
-        gameStart();
+        wakeUp();
+        //gameStart();
     }
 
     void switchCamera()
@@ -171,8 +177,8 @@ public class planeGame : MonoBehaviour
         {
             if (!coin.GetComponent<Animation>().isPlaying)
             {
+                coin_teach.SetActive(true);
                 inGame = true;
-                CoinGameStart();
                 coinGameStart = false;
             }
         }
@@ -180,8 +186,8 @@ public class planeGame : MonoBehaviour
         {
             if (!glasses.GetComponent<Animation>().isPlaying)
             {
+                glasses_teach.SetActive(true);
                 inGame = true;
-                GlassesGameStart();
                 glassesGameStart = false;
             }
         }
@@ -189,8 +195,8 @@ public class planeGame : MonoBehaviour
         {
             if (!candy.GetComponent<Animation>().isPlaying)
             {
+                candy_teach.SetActive(true);
                 inGame = true;
-                CandyGameStart();
                 candyGameStart = false;
             }
         }
@@ -198,8 +204,8 @@ public class planeGame : MonoBehaviour
         {
             if (!juice.GetComponent<Animation>().isPlaying)
             {
+                juice_teach.SetActive(true);
                 inGame = true;
-                JuiceGameStart();
                 juiceGameStart = false;
             }
         }
@@ -210,6 +216,7 @@ public class planeGame : MonoBehaviour
             {
                 character_cam.enabled = true;
                 game_cam.enabled = false;
+                dialogue_end.SetActive(true);
                 npc_candy.GetComponent<AudioSource>().volume = 0.4f;
                 npc_coin.GetComponent<AudioSource>().volume = 0.4f;
                 npc_glasses.GetComponent<AudioSource>().volume = 0.4f;
@@ -267,7 +274,7 @@ public class planeGame : MonoBehaviour
         }
     }
 
-    void GlassesGameStart()
+    public void GlassesGameStart()
     {
         game_cam.enabled = true;
         character_cam.enabled = false;
@@ -275,7 +282,7 @@ public class planeGame : MonoBehaviour
         glasses_game.GetComponent<GlassesGame>().gameStart();
     }
 
-    void CandyGameStart()
+    public void CandyGameStart()
     {
         game_cam.enabled = true;
         character_cam.enabled = false;
@@ -283,7 +290,7 @@ public class planeGame : MonoBehaviour
         candy_game.GetComponent<CandyGame>().gameStart();
     }
 
-    void CoinGameStart()
+    public void CoinGameStart()
     {
         game_cam.enabled = false;
         character_cam.enabled = false;
@@ -294,7 +301,7 @@ public class planeGame : MonoBehaviour
         coin_game.GetComponent<CoinGame>().gameStart();
     }
 
-    void JuiceGameStart()
+   public void JuiceGameStart()
     {
         game_cam.enabled = true;
         character_cam.enabled = false;
