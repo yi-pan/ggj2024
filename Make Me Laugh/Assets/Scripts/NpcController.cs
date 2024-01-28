@@ -22,6 +22,7 @@ public class NpcController : MonoBehaviour
 
     public void Cry()
     {
+        cryBool = true;
         if (!crying.isPlaying)
         {
             crying.Play();
