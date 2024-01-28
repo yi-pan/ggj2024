@@ -14,9 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/working_plane.unity
     guid: 57f63f2cb030c4e00a1edd034068fb0d
-  - enabled: 0
-    path: Assets/Scenes/plane_copy.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/plane_to_subway.unity
     guid: a37d6d61657034944a4a687d21ed439f
