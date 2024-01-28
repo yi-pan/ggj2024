@@ -79,8 +79,8 @@ public class planeGame : MonoBehaviour
         character_cam.enabled = true;
 
         // play first cutscene
-        // wakeUp();
-        gameStart();
+        wakeUp();
+        //gameStart();
     }
 
     void switchCamera()

@@ -1,13 +1,19 @@
 character:Can you believe it? I just ran into that kid again on the subway
 character:the one who was crying loudly on the plane
-friend:Hahahahah, I hope he didn't run into any trouble this time
+friend:Hahahahah, I hope they didn't run into any trouble this time
 character:He didn't run into any trouble...
 friend:But?
-character:But it seems like the subway was too boring for a little kid; he was looking for some fun
-character:So, I played some weird music on the instrument... um... and then scared off the other passengers... That was really a bit awkward.
-friend:Hahaha, sounds like you guys would make great playmates!
+character:But it seems like the subway was too boring for a little kid; they were looking for some fun
+friend:I agree, comuting is boring
+character:Maybe? I then played some weird music... um...
+character:and then scared off the other passengers...
+character:That was really a bit awkward.
+friend:Hahaha, sounds like you two would make great playmates!
 friend:But seriously, why did you do so much for that kid?
 character:I'm not really sure myself…
-character:Maybe it's because I also hated taking trains when I was little
-character:but back then, I just stared blankly at the scenery passing by outside the window
-character:You're right, the younger me could have probably been a great playmate for this kid…
+character:Maybe it's because I also hated taking trains alone when I was little
+character:but back then, I completely shudown my feelings.
+friend:to not cause any trouble for your parents?
+character:the younger me could have probably been a great playmate for this kid…
+character:Haha, You're right
+friend:There is no need to be only "younger self", my friend
