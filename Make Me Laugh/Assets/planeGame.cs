@@ -52,7 +52,7 @@ public class planeGame : MonoBehaviour
     private bool glassesGameStart = false;
     private bool candyGameStart = false;
     private bool juiceGameStart = false;
-
+    private bool selectable = true;
     void wakeUp()
     {
         timeline.GetComponent<PlayableDirector>().Play();
@@ -121,7 +121,7 @@ public class planeGame : MonoBehaviour
             {
                 highlight = raycastHit.transform;
 
-                if (highlight.CompareTag("Selectable"))
+                if (highlight.CompareTag("Selectable") & selectable)
                 {
                     // Debug.Log(highlight.name);
                     objToScale = highlight;
@@ -162,12 +162,38 @@ public class planeGame : MonoBehaviour
         // 
         if (coinGameStart)
         {
-            // play coin game after animation finish
             if (!coin.GetComponent<Animation>().isPlaying)
             {
                 inGame = true;
                 CoinGameStart();
                 coinGameStart = false;
+            }
+        }
+        if (glassesGameStart)
+        {
+            if (!glasses.GetComponent<Animation>().isPlaying)
+            {
+                inGame = true;
+                GlassesGameStart();
+                glassesGameStart = false;
+            }
+        }
+        if (candyGameStart)
+        {
+            if (!candy.GetComponent<Animation>().isPlaying)
+            {
+                inGame = true;
+                CandyGameStart();
+                candyGameStart = false;
+            }
+        }
+        if (juiceGameStart)
+        {
+            if (!juice.GetComponent<Animation>().isPlaying)
+            {
+                inGame = true;
+                JuiceGameStart();
+                juiceGameStart = false;
             }
         }
     }
@@ -178,45 +204,46 @@ public class planeGame : MonoBehaviour
     {
         // deactivate object
         //tool.SetActive(false);
+        tool.tag = "Untagged";
 
         if (tool.name == "coin")
         {
+            selectable = false;
             npc_coin.GetComponent<NpcController>().Cry();
             coin.GetComponent<Animation>().Play("coins_before");
-            Debug.Log("collected coin. Animation Here");
+            //Debug.Log("collected coin. Animation Here");
             coinGameStart = true;
         }
 
         if (tool.name == "juice")
         {
-            //coin_table.SetActive(true);
-            inGame = true;
-            JuiceGameStart();
+            selectable = false;
             npc_juice.GetComponent<NpcController>().Cry();
             npc_juice.transform.localPosition = npc_juice.transform.localPosition - new Vector3(0, 0, 0.8f);
-
-            Debug.Log("collected juice. Animation Here");
+            juice.GetComponent<Animation>().Play("juice_before");
+            //Debug.Log("collected juice. Animation Here");
+            juiceGameStart = true;
         }
 
 
         if (tool.name == "candy")
         {
-            //candy_table.SetActive(true);
-            inGame = true;
-            CandyGameStart();
+            selectable = false;
             npc_candy.GetComponent<NpcController>().Cry();
             npc_candy.transform.localPosition = npc_candy.transform.localPosition - new Vector3(0, 0, 0.8f);
-            Debug.Log("collected candy. Animation Here");
+            candy.GetComponent<Animation>().Play("candy_before");
+            //Debug.Log("collected candy. Animation Here");
+            candyGameStart = true;
         }
 
         if (tool.name == "glasses")
         {
-            //glasses_table.SetActive(true);
-            inGame = true;
-            GlassesGameStart();
+            selectable = false;
             npc_glasses.GetComponent<NpcController>().Cry();
             npc_glasses.transform.localPosition = npc_glasses.transform.localPosition - new Vector3(0, 0, 0.8f);
-            Debug.Log("collected glasses. Animation Here");
+            glasses.GetComponent<Animation>().Play("glasses_before");
+            //Debug.Log("collected glasses. Animation Here");
+            glassesGameStart = true;
         }
     }
 
@@ -257,6 +284,7 @@ public class planeGame : MonoBehaviour
 
     public void MiniGameEnd(string tool)
     {
+        selectable = true;
         inGame = false;
         miniGameCount++;
         if(miniGameCount < 4) {
