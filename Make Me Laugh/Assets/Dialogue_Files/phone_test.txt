@@ -1,0 +1,5 @@
+character:nonono
+friend:1
+friend:2
+character:1
+character:1111111111
