@@ -9,6 +9,7 @@ public class planeGame : MonoBehaviour
     private Transform highlight;
     private Transform selection;
     private RaycastHit raycastHit;
+    private bool animPlayed = false;
 
     public static planeGame instance;
     public GameObject timeline;
@@ -41,6 +42,8 @@ public class planeGame : MonoBehaviour
     public GameObject glasses;
     public GameObject candy;
 
+    public GameObject robot_sep;
+    public GameObject robot_fnished;
 
     private Transform objToScale;
     private bool isScaledUp = false;
@@ -53,6 +56,7 @@ public class planeGame : MonoBehaviour
     private bool candyGameStart = false;
     private bool juiceGameStart = false;
     private bool selectable = true;
+
     void wakeUp()
     {
         timeline.GetComponent<PlayableDirector>().Play();
@@ -77,10 +81,11 @@ public class planeGame : MonoBehaviour
         candy_game.SetActive(false);
         glasses_game.SetActive(false);
         character_cam.enabled = true;
+        robot_fnished.SetActive(false);
 
         // play first cutscene
-        wakeUp();
-        //gameStart();
+        // wakeUp();
+        gameStart();
     }
 
     void switchCamera()
@@ -196,9 +201,22 @@ public class planeGame : MonoBehaviour
                 juiceGameStart = false;
             }
         }
+
+        if (animPlayed)
+        {
+            if (!robot_fnished.GetComponent<Animation>().isPlaying)
+            {
+                character_cam.enabled = true;
+                game_cam.enabled = false;
+                npc_candy.GetComponent<AudioSource>().volume = 0.4f;
+                npc_coin.GetComponent<AudioSource>().volume = 0.4f;
+                npc_glasses.GetComponent<AudioSource>().volume = 0.4f;
+                npc_juice.GetComponent<AudioSource>().volume = 0.4f;
+            }
+        }
     }
 
-    
+
 
     void collectTool(GameObject tool)
     {
@@ -287,12 +305,18 @@ public class planeGame : MonoBehaviour
         selectable = true;
         inGame = false;
         miniGameCount++;
-        if(miniGameCount < 4) {
+        if (miniGameCount < 4)
+        {
             game_cam.enabled = false;
             character_cam.enabled = true;
         }
         else
         {
+            robot_sep.SetActive(false);
+            robot_fnished.SetActive(true);
+            animPlayed = true;
+            robot_fnished.GetComponent<Animation>().Play("fnished_robot_dance");
+
             character_cam.enabled = false;
             game_cam.enabled = true;
             npc_candy.GetComponent<AudioSource>().volume = 0.4f;
@@ -300,7 +324,7 @@ public class planeGame : MonoBehaviour
             npc_glasses.GetComponent<AudioSource>().volume = 0.4f;
             npc_juice.GetComponent<AudioSource>().volume = 0.4f;
         }
-        if(tool == "coin")
+        if (tool == "coin")
         {
             Debug.Log("play coin ending animation");
             coin.SetActive(false);
@@ -309,18 +333,18 @@ public class planeGame : MonoBehaviour
             score_canvas.SetActive(false);
             coin_game.SetActive(false);
         }
-        if(tool == "glasses")
+        if (tool == "glasses")
         {
             Debug.Log("play glasses ending animation");
             glasses.SetActive(false);
             glasses_game.SetActive(false);
         }
-        if(tool == "juice")
+        if (tool == "juice")
         {
-            juice.SetActive(false); 
+            juice.SetActive(false);
             Debug.Log("play juice ending animation");
         }
-        if(tool == "candy")
+        if (tool == "candy")
         {
             candy.SetActive(false);
             Debug.Log("play candy ending animation");

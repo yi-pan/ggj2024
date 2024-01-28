@@ -24,6 +24,7 @@ public class CoinGame : MonoBehaviour
 
     public void gameEnd()
     {
+        robot.SetActive(false);
         planeGame.instance.MiniGameEnd("coin");
     }
 

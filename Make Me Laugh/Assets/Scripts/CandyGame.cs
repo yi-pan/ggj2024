@@ -12,9 +12,14 @@ public class CandyGame : MonoBehaviour
     private RaycastHit raycastHit;
 
     public GameObject[] candies;
-    
+    private bool animPlayed = false;
+
+    public GameObject green;
+    public GameObject robot;
     public void gameStart()
     {
+        green.SetActive(true);
+        robot.SetActive(true);
         isPlaying = true;
     }
 
@@ -24,12 +29,19 @@ public class CandyGame : MonoBehaviour
         if (isPlaying)
         {
             Check();
-            if(count == 10)
+            if (count == 10)
             {
-                // play animation
-                // game end
+                green.GetComponent<Animation>().Play("candy_end");
+                animPlayed = true;
                 isPlaying = false;
+            }
+        }
+        if (animPlayed)
+        {
+            if (!green.GetComponent<Animation>().isPlaying)
+            {
                 gameEnd();
+                animPlayed = false;
             }
         }
     }
@@ -48,6 +60,7 @@ public class CandyGame : MonoBehaviour
 
     void gameEnd()
     {
+        robot.SetActive(false);
         foreach (GameObject candy in candies)
         {
             candy.SetActive(false);
