@@ -1,12 +1,4 @@
-﻿//
-//  Outline.cs
-//  QuickOutline
-//
-//  Created by Chris Nolet on 3/30/18.
-//  Copyright © 2018 Chris Nolet. All rights reserved.
-//
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -24,7 +16,7 @@ public class Outline : MonoBehaviour {
     SilhouetteOnly
   }
 
-  public Mode OutlineMode {
+    public Mode OutlineMode {
     get { return outlineMode; }
     set {
       outlineMode = value;
@@ -48,6 +40,8 @@ public class Outline : MonoBehaviour {
     }
   }
 
+    public bool scaleUp = true;
+
   [Serializable]
   private class ListVector3 {
     public List<Vector3> data;
@@ -59,9 +53,10 @@ public class Outline : MonoBehaviour {
   [SerializeField]
   private Color outlineColor = Color.white;
 
-  [SerializeField, Range(0f, 10f)]
+  [SerializeField, Range(0f, 20f)]
   private float outlineWidth = 2f;
 
+  
   [Header("Optional")]
 
   [SerializeField, Tooltip("Precompute enabled: Per-vertex calculations are performed in the editor and serialized with the object. "
@@ -100,6 +95,7 @@ public class Outline : MonoBehaviour {
   }
 
   void OnEnable() {
+    scaleUp = true;
     foreach (var renderer in renderers) {
 
       // Append outline shaders
@@ -110,6 +106,7 @@ public class Outline : MonoBehaviour {
 
       renderer.materials = materials.ToArray();
     }
+
   }
 
   void OnValidate() {
@@ -138,6 +135,7 @@ public class Outline : MonoBehaviour {
   }
 
   void OnDisable() {
+    
     foreach (var renderer in renderers) {
 
       // Remove outline shaders
