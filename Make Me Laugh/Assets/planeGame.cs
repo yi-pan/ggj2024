@@ -21,6 +21,7 @@ public class planeGame : MonoBehaviour
     public GameObject coin_game;
     public GameObject juice_game;
     public GameObject candy_game;
+    public GameObject glasses_game;
 
     public GameObject game_canvas;
     public GameObject score_canvas;
@@ -28,6 +29,7 @@ public class planeGame : MonoBehaviour
     public GameObject npc_coin;
     public GameObject npc_juice;
     public GameObject npc_candy;
+    public GameObject npc_glasses;
 
     public Camera character_cam;
     public Camera game_cam;
@@ -61,6 +63,7 @@ public class planeGame : MonoBehaviour
         coin_game.SetActive(false);
         juice_game.SetActive(false);
         candy_game.SetActive(false);
+        glasses_game.SetActive(false);
         character_cam.enabled = true;
 
         // play first cutscene
@@ -181,12 +184,21 @@ public class planeGame : MonoBehaviour
         }
         if (tool.name == "glasses")
         {
-            glasses_table.SetActive(true);
+            //glasses_table.SetActive(true);
+            inGame = true;
+            GlassesGameStart();
+            npc_glasses.GetComponent<NpcController>().Cry();
+            npc_glasses.transform.localPosition = npc_glasses.transform.localPosition - new Vector3(0, 0, 0.8f);
             Debug.Log("collected glasses");
         }
+    }
 
-        // switch to game cam  -> do game -> play animation
-        // switchCamera();
+    void GlassesGameStart()
+    {
+        game_cam.enabled = true;
+        character_cam.enabled = false;
+        glasses_game.SetActive(true);
+        glasses_game.GetComponent<GlassesGame>().gameStart();
     }
 
     void CandyGameStart()
@@ -234,6 +246,7 @@ public class planeGame : MonoBehaviour
         game_canvas.SetActive(false);
         score_canvas.SetActive(false);
         coin_game.SetActive(false);
+        glasses_game.SetActive(false);
         //juice_game.SetActive(false);
     }
 
