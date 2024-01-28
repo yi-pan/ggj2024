@@ -7,9 +7,11 @@ public class CandyGame : MonoBehaviour
 {
     public Camera game_cam;
 
+    private int count = 0;
     private bool isPlaying;
     private RaycastHit raycastHit;
 
+    public GameObject[] candies;
     
     public void gameStart()
     {
@@ -21,13 +23,35 @@ public class CandyGame : MonoBehaviour
     {
         if (isPlaying)
         {
-            // raycast
-            Ray ray = game_cam.ScreenPointToRay(Input.mousePosition);
-            // hover
-            if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
+            Check();
+            if(count == 20)
             {
-                
+                // play animation
+                // game end
+                isPlaying=false;
+                gameEnd();
             }
         }
+    }
+
+    void Check()
+    {
+        count = 0;
+        foreach (GameObject candy in candies)
+        {
+            if (candy.transform.localPosition.y < -3)
+            {
+                count++;
+            }
+        }
+    }
+
+    void gameEnd()
+    {
+        foreach (GameObject candy in candies)
+        {
+            candy.SetActive(false);
+        }
+        planeGame.instance.MiniGameEnd();
     }
 }
