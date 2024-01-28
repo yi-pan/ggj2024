@@ -7,7 +7,6 @@ public class NpcController : MonoBehaviour
     Animator npcAnim;
     AudioSource crying;
     public bool sitBool = false;
-    public bool cryBool = false;
 
     private void Awake()
     {
@@ -53,7 +52,5 @@ public class NpcController : MonoBehaviour
     void Update()
     {
         npcAnim.SetBool("isSitting", sitBool);
-        npcAnim.SetBool("isCrying", cryBool);
-
     }
 }
