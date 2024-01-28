@@ -18,12 +18,14 @@ public class dialogueSystem_teach : MonoBehaviour
     int dialogue_index = 0;
     string[] speaker_and_line = new string[0];
     public GameObject handGame;
+    public GameObject game_canvas;
 
     //public PlayableDirector timeline;
 
 
     void Start()
     {
+        game_canvas.SetActive(false);
         //looking for sprites
         main_character = GameObject.Find("character");
         main_character.SetActive(false);
@@ -56,6 +58,7 @@ public class dialogueSystem_teach : MonoBehaviour
             general_speak(dialogue[dialogue_index]);
         } else if (Input.GetKeyUp(KeyCode.Mouse0) && dialogue_index >= dialogue.Length)
         {
+            game_canvas.SetActive(true);
             handGame.GetComponent<RhythmGame>().gameRestart();
             //timeline.Play();
             Debug.Log("dialogue finish");
