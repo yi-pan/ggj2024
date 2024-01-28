@@ -10,8 +10,14 @@ public class GlassesGame : MonoBehaviour
     public GameObject key;
     public float speed = 4f;
 
+    public GameObject robot;
+    public GameObject glasses;
+
+    private bool animPlayed = false;
+
     public void gameStart()
     {
+        robot.SetActive(true);
         instance = this;
         isPlaying = true;
     }
@@ -24,12 +30,23 @@ public class GlassesGame : MonoBehaviour
         {
             key.transform.localPosition = key.transform.localPosition + new Vector3(speed, 0, 0);
         }
+        if (animPlayed)
+        {
+            if (!robot.GetComponent<Animation>().isPlaying)
+            {
+                gameEnd();
+                animPlayed = false;
+            }
+        }
     }
 
     public void Hit()
     {
+        robot.GetComponent<Animation>().Play("robot_glasses_after");
+        glasses.GetComponent<Animation>().Play("glasses_glasses_after");
+        animPlayed = true;
+        isPlaying = false;
         // play animation
-        gameEnd();
     }
 
     public void Miss()
@@ -40,6 +57,8 @@ public class GlassesGame : MonoBehaviour
     void gameEnd()
     {
         key.SetActive(false);
+        robot.SetActive(false);
+        glasses.SetActive(false);
         planeGame.instance.MiniGameEnd("glasses");
     }
 }

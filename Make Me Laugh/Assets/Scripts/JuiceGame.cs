@@ -8,6 +8,7 @@ public class JuiceGame : MonoBehaviour
     public GameObject juice;
     public GameObject cup;
     public GameObject battery;
+    public GameObject robot;
 
     private int clickCount = 0;
     //private int totalCount = 20;
@@ -22,6 +23,7 @@ public class JuiceGame : MonoBehaviour
 
     public void gameStart()
     {
+        robot.SetActive(true);
         isPlaying = true;
         juiceScale = juice.transform.localScale;
     }
@@ -44,8 +46,8 @@ public class JuiceGame : MonoBehaviour
                     {
                         clickCount++;
                         juice.transform.localScale = juice.transform.localScale - new Vector3(0, 0.05f, 0);
-                        battery.transform.localScale = battery.transform.localScale + new Vector3(0.009f, 0, 0);
-                        battery.transform.localPosition = battery.transform.localPosition + new Vector3(-0.005f, 0, 0);
+                        battery.transform.localScale = battery.transform.localScale + new Vector3(0.007f, 0, 0);
+                        battery.transform.localPosition = battery.transform.localPosition + new Vector3(-0.004f, 0, 0);
                     }
                     if (clickCount == 6)
                     {
@@ -71,6 +73,7 @@ public class JuiceGame : MonoBehaviour
 
     void gameEnd()
     {
+        robot.SetActive(false);
         cup.SetActive(false);
         planeGame.instance.MiniGameEnd("juice");
     }
