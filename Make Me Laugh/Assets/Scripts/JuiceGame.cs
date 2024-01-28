@@ -72,6 +72,6 @@ public class JuiceGame : MonoBehaviour
     void gameEnd()
     {
         cup.SetActive(false);
-        planeGame.instance.MiniGameEnd();
+        planeGame.instance.MiniGameEnd("juice");
     }
 }

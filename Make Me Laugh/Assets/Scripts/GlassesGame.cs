@@ -8,6 +8,7 @@ public class GlassesGame : MonoBehaviour
     public static GlassesGame instance;
     public GameObject bar_area;
     public GameObject key;
+    public float speed = 4f;
 
     public void gameStart()
     {
@@ -21,7 +22,7 @@ public class GlassesGame : MonoBehaviour
     {
         if (isPlaying)
         {
-            key.transform.localPosition = key.transform.localPosition + new Vector3(1, 0, 0);
+            key.transform.localPosition = key.transform.localPosition + new Vector3(speed, 0, 0);
         }
     }
 
@@ -39,6 +40,6 @@ public class GlassesGame : MonoBehaviour
     void gameEnd()
     {
         key.SetActive(false);
-        planeGame.instance.MiniGameEnd();
+        planeGame.instance.MiniGameEnd("glasses");
     }
 }

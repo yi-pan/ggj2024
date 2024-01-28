@@ -14,14 +14,15 @@ public class GlassesGameBar : MonoBehaviour
 
     void Update()
     {
-        if (transform.localPosition.x == 580)
+        if (transform.localPosition.x >= 580)
         {
+            Debug.Log("miss");
             GlassesGame.instance.Miss();
         }
         if (Input.GetKeyDown("space"))
         {
             //Debug.Log(transform.localPosition);
-            if (transform.localPosition.x > -170 & transform.localPosition.x < -30)
+            if (transform.localPosition.x > 60 & transform.localPosition.x < 260)
             {
                 gameObject.SetActive(false);
                 GlassesGame.instance.Hit();

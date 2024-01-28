@@ -152,11 +152,7 @@ public class ObjectSelection : MonoBehaviour
 
     void Update()
     {
-        // after playing the initial cutscene, game start
-        if (Input.GetKeyDown("space"))
-        {
-            gameStart();
-        }
+        
 
         // after elevator panel animation finished
         if (elevPanel.GetComponent<AnimationEvent>().animFinished) {
@@ -325,43 +321,6 @@ public class ObjectSelection : MonoBehaviour
                     selection.transform.parent.gameObject.SetActive(false);
                     success_count++;
                 }
-                //print(selection);
-                //if (selection.name == "hand1")
-                //{
-                //    print("click 1");
-                //}
-                //else if (selection.name == "hand2")
-                //{
-                //    print("click 2");
-                //}
-                //else if (selection.name == "hand3")
-                //{
-                //    print("click 3");
-                //}
-                //else if (selection.name == "hand4")
-                //{
-                //    print("click 4");
-                //}
-                //else if (selection.name == "hand5")
-                //{
-                //    print("click 5");
-                //}
-                //else if (selection.name == "hand6")
-                //{
-                //    print("click 6");
-                //}
-                //else if (selection.name == "hand7")
-                //{
-                //    print("click 7");
-                //}
-                //else if (selection.name == "hand8")
-                //{
-                //    print("click 8");
-                //}
-                //else
-                //{
-                //    print("click 9");
-                //}
             }
             else
             {

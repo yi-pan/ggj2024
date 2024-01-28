@@ -21,7 +21,7 @@ public class CoinGame : MonoBehaviour
 
     public void gameEnd()
     {
-        planeGame.instance.MiniGameEnd();
+        planeGame.instance.MiniGameEnd("coin");
         isPlaying = false;
     }
 

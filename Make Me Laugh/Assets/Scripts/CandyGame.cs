@@ -24,11 +24,11 @@ public class CandyGame : MonoBehaviour
         if (isPlaying)
         {
             Check();
-            if(count == 20)
+            if(count == 10)
             {
                 // play animation
                 // game end
-                isPlaying=false;
+                isPlaying = false;
                 gameEnd();
             }
         }
@@ -39,7 +39,7 @@ public class CandyGame : MonoBehaviour
         count = 0;
         foreach (GameObject candy in candies)
         {
-            if (candy.transform.localPosition.y < -3)
+            if (candy.transform.localPosition.y < -4)
             {
                 count++;
             }
@@ -52,6 +52,6 @@ public class CandyGame : MonoBehaviour
         {
             candy.SetActive(false);
         }
-        planeGame.instance.MiniGameEnd();
+        planeGame.instance.MiniGameEnd("candy");
     }
 }

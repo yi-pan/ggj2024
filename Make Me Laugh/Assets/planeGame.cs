@@ -35,11 +35,23 @@ public class planeGame : MonoBehaviour
     public Camera game_cam;
     public Camera coin_cam;
 
+    // object and animation
+    public GameObject coin;
+    public GameObject juice;
+    public GameObject glasses;
+    public GameObject candy;
+
+
     private Transform objToScale;
     private bool isScaledUp = false;
     private bool inGame = false;
 
     private int miniGameCount = 0;
+
+    private bool coinGameStart = false;
+    private bool glassesGameStart = false;
+    private bool candyGameStart = false;
+    private bool juiceGameStart = false;
 
     void wakeUp()
     {
@@ -146,16 +158,35 @@ public class planeGame : MonoBehaviour
                 }
             }
         }
+
+        // 
+        if (coinGameStart)
+        {
+            // play coin game after animation finish
+            if (!coin.GetComponent<Animation>().isPlaying)
+            {
+                inGame = true;
+                CoinGameStart();
+                coinGameStart = false;
+            }
+        }
     }
+
+    
 
     void collectTool(GameObject tool)
     {
         // deactivate object
-        tool.SetActive(false);
+        //tool.SetActive(false);
 
-        // play animation
+        if (tool.name == "coin")
+        {
+            npc_coin.GetComponent<NpcController>().Cry();
+            coin.GetComponent<Animation>().Play("coins_before");
+            Debug.Log("collected coin. Animation Here");
+            coinGameStart = true;
+        }
 
-        // show the object on the table, go to game
         if (tool.name == "juice")
         {
             //coin_table.SetActive(true);
@@ -163,25 +194,21 @@ public class planeGame : MonoBehaviour
             JuiceGameStart();
             npc_juice.GetComponent<NpcController>().Cry();
             npc_juice.transform.localPosition = npc_juice.transform.localPosition - new Vector3(0, 0, 0.8f);
-            Debug.Log("collected juice");
+
+            Debug.Log("collected juice. Animation Here");
         }
-        if (tool.name == "coin")
-        {
-            //coin_table.SetActive(true);
-            inGame = true;
-            CoinGameStart();
-            npc_coin.GetComponent<NpcController>().Cry();
-            Debug.Log("collected coin");
-        }
+
+
         if (tool.name == "candy")
         {
             //candy_table.SetActive(true);
             inGame = true;
             CandyGameStart();
             npc_candy.GetComponent<NpcController>().Cry();
-            npc_candy.transform.localPosition = npc_juice.transform.localPosition - new Vector3(0, 0, 0.8f);
-            Debug.Log("collected candy");
+            npc_candy.transform.localPosition = npc_candy.transform.localPosition - new Vector3(0, 0, 0.8f);
+            Debug.Log("collected candy. Animation Here");
         }
+
         if (tool.name == "glasses")
         {
             //glasses_table.SetActive(true);
@@ -189,7 +216,7 @@ public class planeGame : MonoBehaviour
             GlassesGameStart();
             npc_glasses.GetComponent<NpcController>().Cry();
             npc_glasses.transform.localPosition = npc_glasses.transform.localPosition - new Vector3(0, 0, 0.8f);
-            Debug.Log("collected glasses");
+            Debug.Log("collected glasses. Animation Here");
         }
     }
 
@@ -228,7 +255,7 @@ public class planeGame : MonoBehaviour
         juice_game.GetComponent<JuiceGame>().gameStart();
     }
 
-    public void MiniGameEnd()
+    public void MiniGameEnd(string tool)
     {
         inGame = false;
         miniGameCount++;
@@ -240,13 +267,37 @@ public class planeGame : MonoBehaviour
         {
             character_cam.enabled = false;
             game_cam.enabled = true;
+            npc_candy.GetComponent<AudioSource>().volume = 0.4f;
+            npc_coin.GetComponent<AudioSource>().volume = 0.4f;
+            npc_glasses.GetComponent<AudioSource>().volume = 0.4f;
+            npc_juice.GetComponent<AudioSource>().volume = 0.4f;
         }
-        coin_cam.enabled = false;
-        
-        game_canvas.SetActive(false);
-        score_canvas.SetActive(false);
-        coin_game.SetActive(false);
-        glasses_game.SetActive(false);
+        if(tool == "coin")
+        {
+            Debug.Log("play coin ending animation");
+            coin.SetActive(false);
+            coin_cam.enabled = false;
+            game_canvas.SetActive(false);
+            score_canvas.SetActive(false);
+            coin_game.SetActive(false);
+        }
+        if(tool == "glasses")
+        {
+            Debug.Log("play glasses ending animation");
+            glasses.SetActive(false);
+            glasses_game.SetActive(false);
+        }
+        if(tool == "juice")
+        {
+            juice.SetActive(false); 
+            Debug.Log("play juice ending animation");
+        }
+        if(tool == "candy")
+        {
+            candy.SetActive(false);
+            Debug.Log("play candy ending animation");
+        }
+
         //juice_game.SetActive(false);
     }
 
