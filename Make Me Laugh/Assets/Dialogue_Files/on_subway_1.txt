@@ -1,0 +1,5 @@
+<<Kid crying no-stop>>
+character:... <<???Again???>>
+cry_kid:Boring Boring Boringgggggg
+character:...
+*What can you do to entertain this kid?*

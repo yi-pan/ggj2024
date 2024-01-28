@@ -1,4 +1,0 @@
-<<you hear a kid crying>>
-character:nonono
-cry_kid:my toy is broken
-happy_kid:mine is not

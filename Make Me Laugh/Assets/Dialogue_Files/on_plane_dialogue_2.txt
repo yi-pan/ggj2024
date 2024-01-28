@@ -1,0 +1,4 @@
+happy_kid:Thank you!
+character:... *you feel relieved*
+happy_kid:Here! I am done with playing, it’s your turn~
+character:... *!!!*

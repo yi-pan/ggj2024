@@ -36,6 +36,11 @@ public class TimelinePlayer : MonoBehaviour
     {
         mind_bubble_spawn.SetActive(true);
     }
+
+    public void DisableBubble(GameObject mind)
+    {
+        mind.SetActive(false);
+    }
     // Update is called once per frame
     void Update()
     {

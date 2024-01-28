@@ -18,6 +18,9 @@ public class textSystem : MonoBehaviour
 
     int current_text_index;
 
+    public GameObject GameManager;
+    public string nextScene;
+
     void Start()
     {
         //find the dialogue
@@ -29,6 +32,8 @@ public class textSystem : MonoBehaviour
         string text = textFile.text;  //this is the content as string
         text_dialogue = text.Split("\n");
         text_history = new GameObject[text_dialogue.Length];
+
+        nextText();
         //Debug.Log(text_history);
 
         /*
@@ -46,20 +51,12 @@ public class textSystem : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyUp(KeyCode.Space) && current_text_index < text_dialogue.Length)
+        if (Input.GetKeyUp(KeyCode.Mouse0) && current_text_index < text_dialogue.Length)
         {
-            GameObject new_bubble = SpawnBubble(text_dialogue[current_text_index].Split(":")[0], text_dialogue[current_text_index].Split(":")[1]);
-            text_history[current_text_index] = new_bubble;
-            Debug.Log(new_bubble.transform.position);
-            if (current_text_index > 0)
-            {
-                for (int j = current_text_index; j > 0; j--)
-                {
-                    text_history[j - 1].transform.localPosition = new Vector3(text_history[j - 1].transform.localPosition.x, text_history[j - 1].transform.localPosition.y + 300, 0);
-                }
-            }
-            current_text_index++;
-
+            nextText();
+        } else if (Input.GetKeyUp(KeyCode.Mouse0) && current_text_index >= text_dialogue.Length)
+        {
+            GameManager.GetComponent<Game_Manger>().SceneSwitch(nextScene);
         }
 
     }
@@ -89,5 +86,20 @@ public class textSystem : MonoBehaviour
         TMP_Text text = newSpawn.transform.GetChild(2).gameObject.GetComponent<TMP_Text>();
         text.text = thought;
         return newSpawn;
+    }
+
+    void nextText()
+    {
+        GameObject new_bubble = SpawnBubble(text_dialogue[current_text_index].Split(":")[0], text_dialogue[current_text_index].Split(":")[1]);
+        text_history[current_text_index] = new_bubble;
+        Debug.Log(new_bubble.transform.position);
+        if (current_text_index > 0)
+        {
+            for (int j = current_text_index; j > 0; j--)
+            {
+                text_history[j - 1].transform.localPosition = new Vector3(text_history[j - 1].transform.localPosition.x, text_history[j - 1].transform.localPosition.y + 300, 0);
+            }
+        }
+        current_text_index++;
     }
 }

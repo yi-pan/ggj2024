@@ -4,5 +4,29 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/title.unity
+    guid: a20e87e82371d475796d02771f63c9a1
+  - enabled: 1
+    path: Assets/Scenes/before_plane.unity
+    guid: 5ae343e8934904e9db59935079f562eb
+  - enabled: 1
+    path: Assets/Scenes/plane.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/plane_to_subway.unity
+    guid: a37d6d61657034944a4a687d21ed439f
+  - enabled: 1
+    path: Assets/Scenes/subway.unity
+    guid: 2186efe0707a9ce408bbe31dc0d76425
+  - enabled: 1
+    path: Assets/Scenes/subway_to_elevator.unity
+    guid: e51b3eb5203cf4de5b6388359d69ce5b
+  - enabled: 1
+    path: Assets/Scenes/elevator.unity
+    guid: 6897e9ea63c40884891b5195f4192777
+  - enabled: 1
+    path: Assets/Scenes/restaurant.unity
+    guid: d4470503fbb9519468d9aaa249f76a32
   m_configObjects: {}

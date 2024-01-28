@@ -35,6 +35,8 @@ public class RhythmGame : MonoBehaviour
     private ArrowDrop arrowDrop1;
     private ArrowDrop arrowDrop2;
 
+    public GameObject teach_dialogue;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -209,7 +211,8 @@ public class RhythmGame : MonoBehaviour
                 inverseKeyCode = true;
                 // dialogue
                 arrowDrop1.unit = 0;
-                gameRestart();
+                teach_dialogue.SetActive(true);
+                //gameRestart();
             }
         }
 

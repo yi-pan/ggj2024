@@ -17,7 +17,10 @@ public class dialogueSystem : MonoBehaviour
     //public handGame handGame;
     int dialogue_index = 0;
     string[] speaker_and_line = new string[0];
-    public GameObject handGame;
+    //public GameObject handGame;
+    public ObjectSelection handGame = null;
+    public RhythmGame rhythmGame = null;
+    public planeGame planeGame = null;
 
     //public PlayableDirector timeline;
 
@@ -52,12 +55,17 @@ public class dialogueSystem : MonoBehaviour
     {
         
         //Debug.Log(dialogue[dialogue_index]);
-        if (Input.GetKeyUp(KeyCode.A) && (dialogue_index < dialogue.Length)) {
+        if (Input.GetKeyUp(KeyCode.Mouse0) && (dialogue_index < dialogue.Length)) {
             general_speak(dialogue[dialogue_index]);
-        } else if (Input.GetKeyUp(KeyCode.A) && dialogue_index >= dialogue.Length)
+        } else if (Input.GetKeyUp(KeyCode.Mouse0) && dialogue_index >= dialogue.Length)
         {
-            handGame.GetComponent<ObjectSelection>().gameStart();
+            //handGame.GetComponent<ObjectSelection>().gameStart();
             //timeline.Play();
+
+            if (planeGame != null) planeGame.gameStart();
+            else if (handGame != null) handGame.gameStart();
+            else if (rhythmGame != null) rhythmGame.gameStart(); 
+
             Debug.Log("dialogue finish");
 
             gameObject.SetActive(false);

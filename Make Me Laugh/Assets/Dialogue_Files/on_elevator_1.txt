@@ -1,0 +1,5 @@
+chakid:Sorry, could you please press the 6th floor for me? I could not reach it!
+*It's too noisy in the elevator, it seems like no one heard what the kid was saying, or maybe they just didn't want to help*
+character:... *Why do I want to help them now...*
+*Tears started streaming from the kid's eyes, they looked really upset and began to cry loudly*
+cry_kid:Plz…

@@ -5,25 +5,29 @@ using UnityEngine;
 public class uiController : MonoBehaviour
 {
     public bool showEmoji = false;
+    /*
     public bool showDialogue = false;
     public bool showThought = false;
+    */
 
     //public GameObject dialogue;
     public GameObject emoji;
-    public GameObject thought;
+    //public GameObject thought;
 
     // Start is called before the first frame update
     void Start()
     {
         //dialogue.SetActive(false);
         emoji.SetActive(false);
-        thought.SetActive(false);
+        //thought.SetActive(false);
     }
 
+    /*
     public void ShowDialogue(GameObject dialogue)
     {
         dialogue.SetActive(true);
     }
+    */
     // Update is called once per frame
     void Update()
     {
@@ -46,6 +50,7 @@ public class uiController : MonoBehaviour
             emoji.SetActive(false);
         }
 
+        /*
         if (showThought)
         {
             thought.SetActive(true);
@@ -54,5 +59,6 @@ public class uiController : MonoBehaviour
         {
             thought.SetActive(false);
         }
+        */
     }
 }
