@@ -10,6 +10,7 @@ public class planeGame : MonoBehaviour
     private Transform selection;
     private RaycastHit raycastHit;
 
+    public static planeGame instance;
     public GameObject timeline;
     public GameObject coin_table;
     public GameObject candy_table;
@@ -18,7 +19,15 @@ public class planeGame : MonoBehaviour
     public bool startPlaying = false;
 
     public GameObject coin_game;
+    public GameObject juice_game;
+    public GameObject candy_game;
+
     public GameObject game_canvas;
+    public GameObject score_canvas;
+
+    public GameObject npc_coin;
+    public GameObject npc_juice;
+    public GameObject npc_candy;
 
     public Camera character_cam;
     public Camera game_cam;
@@ -28,6 +37,8 @@ public class planeGame : MonoBehaviour
     private bool isScaledUp = false;
     private bool inGame = false;
 
+    private int miniGameCount = 0;
+
     void wakeUp()
     {
         timeline.GetComponent<PlayableDirector>().Play();
@@ -36,18 +47,25 @@ public class planeGame : MonoBehaviour
     public void gameStart()
     {
         startPlaying = true;
+        inGame = false;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         game_cam.enabled = false;
         coin_cam.enabled = false;
         game_canvas.SetActive(false);
+        score_canvas.SetActive(false);
         coin_game.SetActive(false);
+        juice_game.SetActive(false);
+        candy_game.SetActive(false);
         character_cam.enabled = true;
+
         // play first cutscene
-        wakeUp();
+        // wakeUp();
+        gameStart();
     }
 
     void switchCamera()
@@ -132,32 +150,51 @@ public class planeGame : MonoBehaviour
         // deactivate object
         tool.SetActive(false);
 
-        // show the object on the table
+        // play animation
+
+        // show the object on the table, go to game
         if (tool.name == "juice")
         {
-            juice_table.SetActive(true);
+            //coin_table.SetActive(true);
+            inGame = true;
+            JuiceGameStart();
+            npc_juice.GetComponent<NpcController>().Cry();
+            npc_juice.transform.localPosition = npc_juice.transform.localPosition - new Vector3(0, 0, 0.8f);
             Debug.Log("collected juice");
         }
-        if(tool.name == "coin")
+        if (tool.name == "coin")
         {
-            coin_table.SetActive(true);
+            //coin_table.SetActive(true);
             inGame = true;
             CoinGameStart();
+            npc_coin.GetComponent<NpcController>().Cry();
             Debug.Log("collected coin");
         }
-        if(tool.name == "candy")
+        if (tool.name == "candy")
         {
-            candy_table.SetActive(true);
+            //candy_table.SetActive(true);
+            inGame = true;
+            CandyGameStart();
+            npc_candy.GetComponent<NpcController>().Cry();
+            npc_candy.transform.localPosition = npc_juice.transform.localPosition - new Vector3(0, 0, 0.8f);
             Debug.Log("collected candy");
         }
-        if(tool.name == "glasses")
+        if (tool.name == "glasses")
         {
             glasses_table.SetActive(true);
             Debug.Log("collected glasses");
         }
 
         // switch to game cam  -> do game -> play animation
-        switchCamera();
+        // switchCamera();
+    }
+
+    void CandyGameStart()
+    {
+        game_cam.enabled = true;
+        character_cam.enabled = false;
+        candy_game.SetActive(true);
+        candy_game.GetComponent<CandyGame>().gameStart();
     }
 
     void CoinGameStart()
@@ -166,7 +203,38 @@ public class planeGame : MonoBehaviour
         character_cam.enabled = false;
         coin_cam.enabled = true;
         game_canvas.SetActive(true);
+        score_canvas.SetActive(true);
         coin_game.SetActive(true);
+        coin_game.GetComponent<CoinGame>().gameStart();
+    }
+
+    void JuiceGameStart()
+    {
+        game_cam.enabled = true;
+        character_cam.enabled = false;
+        juice_game.SetActive(true);
+        juice_game.GetComponent<JuiceGame>().gameStart();
+    }
+
+    public void MiniGameEnd()
+    {
+        inGame = false;
+        miniGameCount++;
+        if(miniGameCount < 4) {
+            game_cam.enabled = false;
+            character_cam.enabled = true;
+        }
+        else
+        {
+            character_cam.enabled = false;
+            game_cam.enabled = true;
+        }
+        coin_cam.enabled = false;
+        
+        game_canvas.SetActive(false);
+        score_canvas.SetActive(false);
+        coin_game.SetActive(false);
+        //juice_game.SetActive(false);
     }
 
     void scaleUp(Transform obj)
@@ -179,7 +247,7 @@ public class planeGame : MonoBehaviour
     void scaleDown(Transform obj)
     {
         isScaledUp = false;
-        float num = (float) (1 / 1.4);
+        float num = (float)(1 / 1.4);
         Vector3 temp = Vector3.Scale(obj.transform.localScale, new Vector3(num, num, num));
         obj.transform.localScale = temp;
     }
