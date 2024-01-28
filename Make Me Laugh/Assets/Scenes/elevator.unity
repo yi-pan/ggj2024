@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44755346, g: 0.49751532, b: 0.5753305, a: 1}
+  m_IndirectSpecularColor: {r: 0.44755363, g: 0.49751586, b: 0.5753309, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2252,7 +2252,7 @@ Animator:
   m_GameObject: {fileID: 202705569}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2306,7 +2306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
+  cryBool: 0
 --- !u!82 &202705576
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5289,7 +5290,7 @@ Animator:
   m_GameObject: {fileID: 511484634}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5343,7 +5344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
+  cryBool: 0
 --- !u!82 &511484641
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6160,7 +6162,7 @@ Animator:
   m_GameObject: {fileID: 621636510}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -6214,7 +6216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
+  cryBool: 0
 --- !u!82 &621636517
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10228,7 +10231,7 @@ Animator:
   m_GameObject: {fileID: 890475593}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10282,7 +10285,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
+  cryBool: 0
 --- !u!82 &890475600
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10512,7 +10516,7 @@ Animator:
   m_GameObject: {fileID: 894006783}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10566,7 +10570,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
+  cryBool: 0
 --- !u!82 &894006790
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13243,7 +13248,7 @@ Animator:
   m_GameObject: {fileID: 1179785370}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13297,7 +13302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
+  cryBool: 0
 --- !u!82 &1179785377
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13527,7 +13533,7 @@ Animator:
   m_GameObject: {fileID: 1211956632}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13581,7 +13587,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
+  cryBool: 0
 --- !u!82 &1211956639
 AudioSource:
   m_ObjectHideFlags: 0
@@ -17451,7 +17458,7 @@ Animator:
   m_GameObject: {fileID: 1665142666}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -17505,7 +17512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
+  cryBool: 0
 --- !u!82 &1665142673
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20153,7 +20161,7 @@ Animator:
   m_GameObject: {fileID: 1909947115}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -20202,7 +20210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665660c2a752b0d4b8e661be00d2e382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elevPanel: {fileID: 919132148204856620}
+  sitBool: 0
+  cryBool: 0
 --- !u!82 &1909947121
 AudioSource:
   m_ObjectHideFlags: 0

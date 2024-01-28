@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4484567, g: 0.49849153, b: 0.57563585, a: 1}
+  m_IndirectSpecularColor: {r: 0.448457, g: 0.498492, b: 0.57563627, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -602,7 +602,7 @@ Animator:
   m_GameObject: {fileID: 187787528}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1561,7 +1561,7 @@ Animator:
   m_GameObject: {fileID: 472938129}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3101,7 +3101,7 @@ Animator:
   m_GameObject: {fileID: 1184007493}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4388,7 +4388,7 @@ Animator:
   m_GameObject: {fileID: 1622634249}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 16bf64578544ccb42847a6240420f1fe, type: 2}
+  m_Controller: {fileID: 9100000, guid: 981bdbfd0f60e3448af2695903acb69e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
