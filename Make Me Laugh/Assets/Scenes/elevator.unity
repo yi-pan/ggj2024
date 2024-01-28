@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44755346, g: 0.49751532, b: 0.5753305, a: 1}
+  m_IndirectSpecularColor: {r: 0.44755322, g: 0.49751496, b: 0.57533014, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5635,10 +5635,10 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 561385325}
           m_TargetAssemblyTypeName: TimelinePlayer, Assembly-CSharp
-          m_MethodName: SpawnMindBubble
+          m_MethodName: DisableBubble
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 1111071085473689862}
+            m_ObjectArgument: {fileID: 291165691}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -5647,10 +5647,10 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 561385325}
           m_TargetAssemblyTypeName: TimelinePlayer, Assembly-CSharp
-          m_MethodName: DisableBubble
+          m_MethodName: SpawnMindBubble
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 291165691}
+            m_ObjectArgument: {fileID: 1111071085473689862}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -25805,6 +25805,8 @@ MonoBehaviour:
   textFile: {fileID: 4900000, guid: 76856509fba974b36bbe9e404fbf84dd, type: 3}
   textDisplay: {fileID: 5091869843510977835}
   director: {fileID: 561385323}
+  Game_Manager: {fileID: 0}
+  scene_name: 
 --- !u!4 &4898929854078300894
 Transform:
   m_ObjectHideFlags: 0

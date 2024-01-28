@@ -21,7 +21,10 @@ public class dialogueSystem_end : MonoBehaviour
     //public ObjectSelection handGame = null;
     //public RhythmGame rhythmGame = null;
     //public planeGame planeGame = null;
-    public PlayableDirector director;
+    public PlayableDirector director = null;
+    public GameObject Game_Manager = null;
+    public string scene_name;
+
 
     //public PlayableDirector timeline;
 
@@ -68,7 +71,8 @@ public class dialogueSystem_end : MonoBehaviour
             //else if (rhythmGame != null) rhythmGame.gameStart(); 
 
             Debug.Log("dialogue finish");
-            director.Play();
+            if (director != null) director.Play();
+            else if (Game_Manager != null) Game_Manager.GetComponent<Game_Manger>().SceneSwitch(scene_name);
             gameObject.SetActive(false);
         }
         
