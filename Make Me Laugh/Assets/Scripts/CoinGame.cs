@@ -13,6 +13,9 @@ public class CoinGame : MonoBehaviour
     public int hit_count;
     public AudioSource coinAudio;
     public int total_count = 0;
+    public GameObject robot;
+
+    private bool animPlayed = false;
 
     public void gameStart()
     {
@@ -22,7 +25,6 @@ public class CoinGame : MonoBehaviour
     public void gameEnd()
     {
         planeGame.instance.MiniGameEnd("coin");
-        isPlaying = false;
     }
 
     // Start is called before the first frame update
@@ -39,10 +41,18 @@ public class CoinGame : MonoBehaviour
             _hit.text = "Hit: " + hit_count;
             if(total_count == 20)
             {
+                robot.GetComponent<Animation>().Play("coin_after");
+                animPlayed = true;
+                isPlaying = false;
+            }
+        }
+        if (animPlayed)
+        {
+            if (!robot.GetComponent<Animation>().isPlaying)
+            {
                 gameEnd();
             }
         }
-       
     }
 
     public void Hit()
