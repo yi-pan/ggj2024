@@ -246,6 +246,7 @@ public class planeGame : MonoBehaviour
         game_canvas.SetActive(false);
         score_canvas.SetActive(false);
         coin_game.SetActive(false);
+        glasses_game.SetActive(false);
         //juice_game.SetActive(false);
     }
 

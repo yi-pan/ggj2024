@@ -14,27 +14,18 @@ public class GlassesGameBar : MonoBehaviour
 
     void Update()
     {
+        if (transform.localPosition.x == 580)
+        {
+            GlassesGame.instance.Miss();
+        }
         if (Input.GetKeyDown("space"))
         {
-            if (canBePressed)
+            //Debug.Log(transform.localPosition);
+            if (transform.localPosition.x > -170 & transform.localPosition.x < -30)
             {
-                Debug.Log("!!!!!!!!!!!!!!!!!!!!!");
                 gameObject.SetActive(false);
                 GlassesGame.instance.Hit();
             }
         }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        Debug.Log("Triggered");
-        canBePressed = true;
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        Debug.Log("out collision");
-        canBePressed = false;
-        GlassesGame.instance.Miss();
     }
 }

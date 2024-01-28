@@ -11,6 +11,7 @@ public class GlassesGame : MonoBehaviour
 
     public void gameStart()
     {
+        instance = this;
         isPlaying = true;
     }
 
