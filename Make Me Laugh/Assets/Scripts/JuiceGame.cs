@@ -46,8 +46,8 @@ public class JuiceGame : MonoBehaviour
                     {
                         clickCount++;
                         juice.transform.localScale = juice.transform.localScale - new Vector3(0, 0.05f, 0);
-                        battery.transform.localScale = battery.transform.localScale + new Vector3(0.008f, 0, 0);
-                        battery.transform.localPosition = battery.transform.localPosition + new Vector3(-0.005f, 0, 0);
+                        battery.transform.localScale = battery.transform.localScale + new Vector3(0.007f, 0, 0);
+                        battery.transform.localPosition = battery.transform.localPosition + new Vector3(-0.004f, 0, 0);
                     }
                     if (clickCount == 6)
                     {

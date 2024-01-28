@@ -24,6 +24,8 @@ public class planeGame : MonoBehaviour
     public GameObject candy_game;
     public GameObject glasses_game;
 
+    public GameObject candy_green;
+
     public GameObject game_canvas;
     public GameObject score_canvas;
 
@@ -315,6 +317,7 @@ public class planeGame : MonoBehaviour
             robot_sep.SetActive(false);
             robot_fnished.SetActive(true);
             animPlayed = true;
+            candy_green.SetActive(false);
             robot_fnished.GetComponent<Animation>().Play("fnished_robot_dance");
 
             character_cam.enabled = false;
