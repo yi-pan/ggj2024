@@ -92,8 +92,8 @@ public class planeGame : MonoBehaviour
         robot_fnished.SetActive(false);
 
         // play first cutscene
-        wakeUp();
-        //gameStart();
+        // wakeUp();
+        gameStart();
     }
 
     void switchCamera()
