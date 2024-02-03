@@ -143,7 +143,7 @@ public class ObjectSelection : MonoBehaviour
 
     void npcCry()
     {
-        UICanvas.GetComponent<uiController>().showEmoji = true;
+        //UICanvas.GetComponent<uiController>().showEmoji = true;
         foreach(GameObject npc in npcs)
         {
             npc.GetComponent<NpcController>().Cry();

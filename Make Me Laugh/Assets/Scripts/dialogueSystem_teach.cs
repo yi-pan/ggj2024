@@ -20,12 +20,14 @@ public class dialogueSystem_teach : MonoBehaviour
     public GameObject handGame;
     public GameObject game_canvas;
 
+    public planeGame mini_game;
+
     //public PlayableDirector timeline;
 
 
     void Start()
     {
-        game_canvas.SetActive(false);
+        if (game_canvas != null) game_canvas.SetActive(false);
         //looking for sprites
         main_character = GameObject.Find("character");
         main_character.SetActive(false);
@@ -58,8 +60,18 @@ public class dialogueSystem_teach : MonoBehaviour
             general_speak(dialogue[dialogue_index]);
         } else if (Input.GetKeyUp(KeyCode.Mouse0) && dialogue_index >= dialogue.Length)
         {
-            game_canvas.SetActive(true);
-            handGame.GetComponent<RhythmGame>().gameRestart();
+            if (game_canvas != null)
+            {
+                game_canvas.SetActive(true);
+                handGame.GetComponent<RhythmGame>().gameRestart();
+            } else if (mini_game != null)
+            {
+                if (string.Equals(gameObject.name, "coin_game_dialogue")) mini_game.CoinGameStart();
+                if (string.Equals(gameObject.name, "juice_game_dialogue")) mini_game.JuiceGameStart();
+                if (string.Equals(gameObject.name, "candy_game_dialogue")) mini_game.CandyGameStart();
+                if (string.Equals(gameObject.name, "glasses_game_dialogue")) mini_game.GlassesGameStart();
+
+            }
             //timeline.Play();
             Debug.Log("dialogue finish");
 
