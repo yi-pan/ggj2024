@@ -43,7 +43,8 @@ public class GlassesGame : MonoBehaviour
     public void Hit()
     {
         robot.GetComponent<Animation>().Play("robot_glasses_after");
-        glasses.GetComponent<Animation>().Play("glasses_glasses_after");
+
+        glasses.GetComponent<Animation>().Play("glasses_glasses_shake");
         animPlayed = true;
         isPlaying = false;
         // play animation

@@ -5,4 +5,4 @@ cry_kid:Can you help me fix my robot?
 character:... *trying to look away*
 cry_kid:*cries even louder*
 character:... *signs*
-*it seems like you have to help the kid fix this robot, what to do? Maybe use objects belonging to these indifferent adults.*
+*it seems like you have to help the kid fix this robot, what to do? Let's see what I can use.*
