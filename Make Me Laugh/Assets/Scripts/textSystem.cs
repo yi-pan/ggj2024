@@ -16,6 +16,8 @@ public class textSystem : MonoBehaviour
     public float spawn_main_x;
     public float spawn_main_y;
 
+    public AudioSource clickAudio;
+
     int current_text_index;
 
     public GameObject GameManager;
@@ -54,6 +56,8 @@ public class textSystem : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0) && current_text_index < text_dialogue.Length)
         {
             nextText();
+            // This is where we call sound effect ?
+            clickAudio.Play();
         } else if (Input.GetKeyUp(KeyCode.Mouse0) && current_text_index >= text_dialogue.Length)
         {
             GameManager.GetComponent<Game_Manger>().SceneSwitch(nextScene);
@@ -71,7 +75,7 @@ public class textSystem : MonoBehaviour
             newSpawn.transform.SetParent(gameObject.transform);
             newSpawn.transform.localPosition = new Vector3(spawn_main_x, spawn_main_y, 0);
             newSpawn.transform.Rotate(0, 0, 20);
-            Debug.Log(newSpawn.transform.position);
+            //Debug.Log(newSpawn.transform.position);
         }
         else
         {
@@ -92,7 +96,7 @@ public class textSystem : MonoBehaviour
     {
         GameObject new_bubble = SpawnBubble(text_dialogue[current_text_index].Split(":")[0], text_dialogue[current_text_index].Split(":")[1]);
         text_history[current_text_index] = new_bubble;
-        Debug.Log(new_bubble.transform.position);
+        //Debug.Log(new_bubble.transform.position);
         if (current_text_index > 0)
         {
             for (int j = current_text_index; j > 0; j--)

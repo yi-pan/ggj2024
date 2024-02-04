@@ -41,7 +41,7 @@ public class dialogueSystem : MonoBehaviour
         //textDisplay = GameObject.Find("text");
         textContent = textDisplay.GetComponent<TMP_Text>();
         //Debug.Log(textDisplay);
-        Debug.Log(textContent);
+        //Debug.Log(textContent);
 
         string text = textFile.text;  //this is the content as string
         dialogue = text.Split("\n");
@@ -66,7 +66,7 @@ public class dialogueSystem : MonoBehaviour
             else if (handGame != null) handGame.gameStart();
             else if (rhythmGame != null) rhythmGame.gameStart(); 
 
-            Debug.Log("dialogue finish");
+            //Debug.Log("dialogue finish");
 
             gameObject.SetActive(false);
         }
@@ -84,7 +84,7 @@ public class dialogueSystem : MonoBehaviour
 
         speaking_character.SetActive(true);
         textContent.text = speaker_and_line[1];
-        Debug.Log(speaker_and_line[1]);
+        //Debug.Log(speaker_and_line[1]);
 
     }
 

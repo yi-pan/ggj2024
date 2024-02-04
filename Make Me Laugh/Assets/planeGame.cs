@@ -53,6 +53,9 @@ public class planeGame : MonoBehaviour
     public GameObject robot_sep;
     public GameObject robot_fnished;
 
+    // ambience sound
+    public AudioSource ambience;
+
     private Transform objToScale;
     private bool isScaledUp = false;
     private bool inGame = false;
@@ -74,6 +77,7 @@ public class planeGame : MonoBehaviour
     {
         startPlaying = true;
         inGame = false;
+        ambience.Play();
     }
 
     // Start is called before the first frame update
@@ -92,8 +96,8 @@ public class planeGame : MonoBehaviour
         robot_fnished.SetActive(false);
 
         // play first cutscene
-        // wakeUp();
-        gameStart();
+        wakeUp();
+        //gameStart();
     }
 
     void switchCamera()
@@ -117,10 +121,10 @@ public class planeGame : MonoBehaviour
         {
             // switch c
             
-            if (Input.GetKeyDown("space"))
-            {
-                switchCamera();
-            }
+            //if (Input.GetKeyDown("space"))
+            //{
+            //    switchCamera();
+            //}
 
             // hightlight
             if (highlight != null)

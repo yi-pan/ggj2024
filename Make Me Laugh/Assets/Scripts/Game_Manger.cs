@@ -13,7 +13,7 @@ public class Game_Manger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void SceneSwitch(string scene_name)
