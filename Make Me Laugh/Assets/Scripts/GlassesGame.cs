@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class GlassesGame : MonoBehaviour
     public static GlassesGame instance;
     public GameObject bar_area;
     public GameObject key;
-    public float speed = 4f;
+    public float speed = 2f;
 
     public GameObject robot;
     public GameObject glasses;
@@ -40,7 +40,14 @@ public class GlassesGame : MonoBehaviour
         //        animPlayed = false;
         //    }
         //}
-
+        if(count == 1)
+        {
+            speed = 3f;
+        }
+        if(count == 2)
+        {
+            speed = 4F;
+        }
         if(count == 3)
         {
             glasses.GetComponent<Animation>().Play("glasses_glasses_after");
