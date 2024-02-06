@@ -8,27 +8,27 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: arm
-    second: {fileID: 2100000, guid: 6e9072df037acb94d9105d686db689e8, type: 2}
+    second: {fileID: 2100000, guid: 50239abcb52a94b56804e99383fe6b22, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: body
-    second: {fileID: 2100000, guid: 97ce641a05bb4af42b0c6bfd8156dabd, type: 2}
+    second: {fileID: 2100000, guid: 3f6a846f0cdae407c9e533f5cd9c9627, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: body2
-    second: {fileID: 2100000, guid: e7519cc4181a23444bc5dbe006765c3f, type: 2}
+    second: {fileID: 2100000, guid: 305f57176728240c5a387ff47cf5c5e6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: hands
-    second: {fileID: 2100000, guid: 014b5aa538f88604b8dbc172fd115cdf, type: 2}
+    second: {fileID: 2100000, guid: 0f4078e8f9ae84a07bfa6047af29687f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: rainbowcandy
-    second: {fileID: 2100000, guid: 02c1a3823bd671246aa766baaec6311c, type: 2}
+    second: {fileID: 2100000, guid: dc79a4906965649faa9d7aa3622bd97d, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
