@@ -97,8 +97,8 @@ public class planeGame : MonoBehaviour
         robot_fnished.SetActive(false);
 
         // play first cutscene
-        // wakeUp();
-        gameStart();
+        wakeUp();
+        //gameStart();
     }
 
     void switchCamera()
@@ -179,10 +179,10 @@ public class planeGame : MonoBehaviour
         else // in mini games
         {
             cryEmoji.SetActive(false);
-            npc_candy.GetComponent<AudioSource>().volume = 0.05f;
-            npc_coin.GetComponent<AudioSource>().volume = 0.05f;
-            npc_glasses.GetComponent<AudioSource>().volume = 0.05f;
-            npc_juice.GetComponent<AudioSource>().volume = 0.05f;
+            npc_candy.GetComponent<AudioSource>().volume = 0.1f;
+            npc_coin.GetComponent<AudioSource>().volume = 0.1f;
+            npc_glasses.GetComponent<AudioSource>().volume = 0.1f;
+            npc_juice.GetComponent<AudioSource>().volume = 0.1f;
         }
 
         if (coinGameStart)

@@ -6,7 +6,7 @@ public class Arrow : MonoBehaviour
 {
     public bool canBePressed;
     public KeyCode keyToPress;
-
+    public GameObject rhythmGame;
 
     void Start()
     {

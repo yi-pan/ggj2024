@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class JuiceGame : MonoBehaviour
 {
+    public GameObject uiCanvas;
     public GameObject juice;
     public GameObject cup;
     public GameObject battery;
@@ -27,6 +29,7 @@ public class JuiceGame : MonoBehaviour
 
     public void gameStart()
     {
+        uiCanvas.SetActive(true);
         robot.SetActive(true);
         //isPlaying = true;
         straw.GetComponent<Animation>().Play("juice_straw");
@@ -84,6 +87,7 @@ public class JuiceGame : MonoBehaviour
 
     void gameEnd()
     {
+        uiCanvas.SetActive(false);
         robot.GetComponent<ChangeMaterial>().changeBody = true;
         robot.SetActive(false);
         cup.SetActive(false);
