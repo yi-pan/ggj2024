@@ -16,6 +16,12 @@ public class CandyGame : MonoBehaviour
 
     public GameObject green;
     public GameObject robot;
+
+    public GameObject headlight;
+
+    public GameObject coin_robot;
+    public GameObject coin_robot_green;
+
     public void gameStart()
     {
         green.SetActive(true);
@@ -38,11 +44,22 @@ public class CandyGame : MonoBehaviour
         }
         if (animPlayed)
         {
-            if (!green.GetComponent<Animation>().isPlaying)
+            if (green.GetComponent<AnimationEvent>().animFinished)
             {
-                gameEnd();
-                animPlayed = false;
+                green.SetActive(false);
+                headlight.GetComponent<Animation>().Play("green_on");
             }
+            if (headlight.GetComponent<AnimationEvent>().animFinished)
+            {
+                robot.GetComponent<ChangeMaterial>().changeLight = true;
+                animPlayed = false;
+                gameEnd();
+            }
+            //if (!green.GetComponent<Animation>().isPlaying)
+            //{
+            //    gameEnd();
+            //    animPlayed = false;
+            //}
         }
     }
 
@@ -60,6 +77,8 @@ public class CandyGame : MonoBehaviour
 
     void gameEnd()
     {
+        coin_robot_green.SetActive(true);
+        coin_robot.SetActive(false);
         robot.SetActive(false);
         foreach (GameObject candy in candies)
         {

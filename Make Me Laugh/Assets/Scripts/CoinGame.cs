@@ -14,6 +14,7 @@ public class CoinGame : MonoBehaviour
     public AudioSource coinAudio;
     public int total_count = 0;
     public GameObject robot;
+    public GameObject robot_green;
 
     private bool animPlayed = false;
 
@@ -40,21 +41,23 @@ public class CoinGame : MonoBehaviour
         if (isPlaying)
         {
             _hit.text = "Hit: " + hit_count;
-            if(total_count == 20)
+            if (total_count == 20)
             {
                 robot.GetComponent<Animation>().Play("coin_after");
+                robot_green.GetComponent<Animation>().Play("coin_after");
                 animPlayed = true;
                 isPlaying = false;
             }
         }
         if (animPlayed)
         {
-            if (!robot.GetComponent<Animation>().isPlaying)
+            if (!robot.GetComponent<Animation>().isPlaying | !robot_green.GetComponent<Animation>().isPlaying)
             {
                 gameEnd();
             }
         }
     }
+
 
     public void Hit()
     {

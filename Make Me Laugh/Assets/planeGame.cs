@@ -13,10 +13,7 @@ public class planeGame : MonoBehaviour
 
     public static planeGame instance;
     public GameObject timeline;
-    public GameObject coin_table;
-    public GameObject candy_table;
-    public GameObject juice_table;
-    public GameObject glasses_table;
+
     public bool startPlaying = false;
 
     public GameObject coin_game;
@@ -55,6 +52,10 @@ public class planeGame : MonoBehaviour
 
     // ambience sound
     public AudioSource ambience;
+
+    // npc crying emoji bubbles
+    public GameObject cryEmoji;
+    public GameObject[] cryEmojis;
 
     private Transform objToScale;
     private bool isScaledUp = false;
@@ -96,8 +97,8 @@ public class planeGame : MonoBehaviour
         robot_fnished.SetActive(false);
 
         // play first cutscene
-        wakeUp();
-        //gameStart();
+        // wakeUp();
+        gameStart();
     }
 
     void switchCamera()
@@ -119,13 +120,7 @@ public class planeGame : MonoBehaviour
     {
         if (startPlaying & !inGame)
         {
-            // switch c
-            
-            //if (Input.GetKeyDown("space"))
-            //{
-            //    switchCamera();
-            //}
-
+            cryEmoji.SetActive(true);
             // hightlight
             if (highlight != null)
             {
@@ -175,9 +170,21 @@ public class planeGame : MonoBehaviour
                     highlight = null;
                 }
             }
+
+            npc_candy.GetComponent<AudioSource>().volume = 0.4f;
+            npc_coin.GetComponent<AudioSource>().volume = 0.4f;
+            npc_glasses.GetComponent<AudioSource>().volume = 0.4f;
+            npc_juice.GetComponent<AudioSource>().volume = 0.4f;
+        }
+        else // in mini games
+        {
+            cryEmoji.SetActive(false);
+            npc_candy.GetComponent<AudioSource>().volume = 0.05f;
+            npc_coin.GetComponent<AudioSource>().volume = 0.05f;
+            npc_glasses.GetComponent<AudioSource>().volume = 0.05f;
+            npc_juice.GetComponent<AudioSource>().volume = 0.05f;
         }
 
-        // 
         if (coinGameStart)
         {
             if (!coin.GetComponent<Animation>().isPlaying)
@@ -207,6 +214,9 @@ public class planeGame : MonoBehaviour
         }
         if (juiceGameStart)
         {
+
+
+
             if (!juice.GetComponent<Animation>().isPlaying)
             {
                 juice_teach.SetActive(true);
@@ -222,10 +232,10 @@ public class planeGame : MonoBehaviour
                 character_cam.enabled = true;
                 game_cam.enabled = false;
                 dialogue_end.SetActive(true);
-                npc_candy.GetComponent<AudioSource>().volume = 0.4f;
-                npc_coin.GetComponent<AudioSource>().volume = 0.4f;
-                npc_glasses.GetComponent<AudioSource>().volume = 0.4f;
-                npc_juice.GetComponent<AudioSource>().volume = 0.4f;
+                //npc_candy.GetComponent<AudioSource>().volume = 0.4f;
+                //npc_coin.GetComponent<AudioSource>().volume = 0.4f;
+                //npc_glasses.GetComponent<AudioSource>().volume = 0.4f;
+                //npc_juice.GetComponent<AudioSource>().volume = 0.4f;
             }
         }
     }
@@ -242,6 +252,7 @@ public class planeGame : MonoBehaviour
         {
             selectable = false;
             npc_coin.GetComponent<NpcController>().Cry();
+            cryEmojis[0].SetActive(true);
             coin.GetComponent<Animation>().Play("coins_before");
             //Debug.Log("collected coin. Animation Here");
             coinGameStart = true;
@@ -251,6 +262,7 @@ public class planeGame : MonoBehaviour
         {
             selectable = false;
             npc_juice.GetComponent<NpcController>().Cry();
+            cryEmojis[1].SetActive(true);
             npc_juice.transform.localPosition = npc_juice.transform.localPosition - new Vector3(0, 0, 0.8f);
             juice.GetComponent<Animation>().Play("juice_before");
             //Debug.Log("collected juice. Animation Here");
@@ -262,6 +274,7 @@ public class planeGame : MonoBehaviour
         {
             selectable = false;
             npc_candy.GetComponent<NpcController>().Cry();
+            cryEmojis[2].SetActive(true);
             npc_candy.transform.localPosition = npc_candy.transform.localPosition - new Vector3(0, 0, 0.8f);
             candy.GetComponent<Animation>().Play("candy_before");
             //Debug.Log("collected candy. Animation Here");
@@ -272,6 +285,7 @@ public class planeGame : MonoBehaviour
         {
             selectable = false;
             npc_glasses.GetComponent<NpcController>().Cry();
+            cryEmojis[3].SetActive(true);
             npc_glasses.transform.localPosition = npc_glasses.transform.localPosition - new Vector3(0, 0, 0.8f);
             glasses.GetComponent<Animation>().Play("glasses_before");
             //Debug.Log("collected glasses. Animation Here");
@@ -341,7 +355,6 @@ public class planeGame : MonoBehaviour
         }
         if (tool == "coin")
         {
-            Debug.Log("play coin ending animation");
             coin.SetActive(false);
             coin_cam.enabled = false;
             game_canvas.SetActive(false);
@@ -350,19 +363,16 @@ public class planeGame : MonoBehaviour
         }
         if (tool == "glasses")
         {
-            Debug.Log("play glasses ending animation");
             glasses.SetActive(false);
             glasses_game.SetActive(false);
         }
         if (tool == "juice")
         {
             juice.SetActive(false);
-            Debug.Log("play juice ending animation");
         }
         if (tool == "candy")
         {
             candy.SetActive(false);
-            Debug.Log("play candy ending animation");
         }
 
         //juice_game.SetActive(false);

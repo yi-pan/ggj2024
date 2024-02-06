@@ -3,8 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class changeMaterial : MonoBehaviour
+public class ChangeMaterial : MonoBehaviour
 {
+    public bool changeBody; // after juice
+    public bool changeLight; // after candy
+    public bool changeArm; // after glasses
+
     public GameObject body;
     public GameObject light;
     public GameObject arm;
@@ -21,17 +25,18 @@ public class changeMaterial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("1"))
+        if (Input.GetKeyDown("1") | changeBody)
         {
             ChangeBody();
         }
-        if (Input.GetKeyDown("2"))
+        if (Input.GetKeyDown("2") | changeLight)
         {
             ChangeLight();
         }
-        if(Input.GetKeyDown("3"))
+        if(Input.GetKeyDown("3") | changeArm)
         {
             ChangeArm();
+            changeArm = false;
         }
     }
 

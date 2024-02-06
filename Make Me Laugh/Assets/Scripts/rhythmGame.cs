@@ -17,6 +17,7 @@ public class RhythmGame : MonoBehaviour
     public GameObject[] npcs;
     public GameObject timeline;
     public GameObject timeline2;
+    public GameObject[] cryEmoji;
 
     [SerializeField]
     private Camera cutscene_cam;
@@ -72,6 +73,7 @@ public class RhythmGame : MonoBehaviour
     {
         //cutscene_cam.enabled = false;
         //game_cam.enabled = true;
+        inverseKeyCode = false;
         arrows.SetActive(true);
         arrows2.SetActive(false);
         gameCanvas.SetActive(true);
@@ -127,7 +129,10 @@ public class RhythmGame : MonoBehaviour
             music.Stop();
         }
         gameCanvas.SetActive(false);
-
+        foreach(GameObject e in cryEmoji)
+        {
+            e.SetActive(false);
+        }
         // CUTSCENE 2 START
         outSubway();
     }
@@ -173,23 +178,28 @@ public class RhythmGame : MonoBehaviour
             if (hit_count + miss_count == 11)
             {
                 npcs[0].GetComponent<NpcController>().Cry();
+                cryEmoji[0].SetActive(true);
             }
             if (hit_count + miss_count == 20)
             {
-                npcs[1].transform.localPosition = npcs[1].transform.localPosition - new Vector3(0.8f, 0, 0);
+                npcs[1].transform.localPosition = npcs[1].transform.localPosition - new Vector3(0.003f, 0, 0);
                 npcs[1].GetComponent<NpcController>().Cry();
+                cryEmoji[1].SetActive(true);
             }
             if (hit_count + miss_count == 30)
             {
-                npcs[2].transform.localPosition = npcs[2].transform.localPosition - new Vector3(0.8f, 0, 0);
-                npcs[3].transform.localPosition = npcs[3].transform.localPosition - new Vector3(0.8f, 0, 0);
+                npcs[2].transform.localPosition = npcs[2].transform.localPosition - new Vector3(0.006f, 0, 0);
+                npcs[3].transform.localPosition = npcs[3].transform.localPosition - new Vector3(0.004f, 0, 0);
                 npcs[2].GetComponent<NpcController>().Cry();
                 npcs[3].GetComponent<NpcController>().Cry();
+                cryEmoji[2].SetActive(true);
+                cryEmoji[3].SetActive(true);
             }
             if (hit_count + miss_count == 40)
             {
-                npcs[4].transform.localPosition = npcs[4].transform.localPosition - new Vector3(0.8f, 0, 0);
+                npcs[4].transform.localPosition = npcs[4].transform.localPosition - new Vector3(0.002f, 0, 0);
                 npcs[4].GetComponent<NpcController>().Cry();
+                cryEmoji[4].SetActive(true);
                 npcs[5].GetComponent<NpcController>().Cry();
             }
             if (hit_count + miss_count == 50)
@@ -216,7 +226,8 @@ public class RhythmGame : MonoBehaviour
                 // dialogue
                 arrowDrop1.unit = 0;
                 teach_dialogue.SetActive(true);
-                //gameRestart();
+                // bass stop
+                bass.Stop();
             }
         }
 
