@@ -8,6 +8,8 @@ public class JuiceGame : MonoBehaviour
     public GameObject juice;
     public GameObject cup;
     public GameObject battery;
+    public GameObject batteryBK;
+    public GameObject straw;
     public GameObject robot;
 
     private int clickCount = 0;
@@ -21,16 +23,25 @@ public class JuiceGame : MonoBehaviour
     public Material orange;
     public Material green;
 
+    
+
     public void gameStart()
     {
         robot.SetActive(true);
-        isPlaying = true;
+        //isPlaying = true;
+        straw.GetComponent<Animation>().Play("juice_straw");
         juiceScale = juice.transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (straw.GetComponent<AnimationEvent>().animFinished)
+        {
+            straw.GetComponent<AnimationEvent>().animFinished = false;
+            isPlaying = true;
+        }
+
         // click on juice
         if (isPlaying)
         {
@@ -41,13 +52,13 @@ public class JuiceGame : MonoBehaviour
             {
                 if (raycastHit.transform.name == "cup" & juice.transform.localScale.y > 0)
                 {
-                    cup.transform.localScale = new Vector3(18f, 18f, 18f);
+                    cup.transform.localScale = new Vector3(24f, 24f, 24f);
                     if (Input.GetMouseButtonDown(0))
                     {
                         clickCount++;
                         juice.transform.localScale = juice.transform.localScale - new Vector3(0, 0.05f, 0);
-                        battery.transform.localScale = battery.transform.localScale + new Vector3(0.007f, 0, 0);
-                        battery.transform.localPosition = battery.transform.localPosition + new Vector3(-0.004f, 0, 0);
+                        battery.transform.localScale = battery.transform.localScale + new Vector3(0.0085f, 0, 0);
+                        battery.transform.localPosition = battery.transform.localPosition + new Vector3(-0.0047f, 0, 0);
                     }
                     if (clickCount == 6)
                     {
@@ -60,7 +71,7 @@ public class JuiceGame : MonoBehaviour
                 }
                 else
                 {
-                    cup.transform.localScale = new Vector3(17f, 17f, 17f);
+                    cup.transform.localScale = new Vector3(23f, 23f, 23f);
                 }
             }
             if (juice.transform.localScale.y < 0)
@@ -73,8 +84,12 @@ public class JuiceGame : MonoBehaviour
 
     void gameEnd()
     {
+        robot.GetComponent<ChangeMaterial>().changeBody = true;
         robot.SetActive(false);
         cup.SetActive(false);
+        straw.SetActive(false);
+        battery.SetActive(false);
+        batteryBK.SetActive(false);
         planeGame.instance.MiniGameEnd("juice");
     }
 }

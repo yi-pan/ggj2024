@@ -9,6 +9,5 @@ public class AnimationEvent : MonoBehaviour
     public void AnimFinished()
     {
         animFinished = true;
-        //Debug.Log("animation finished");
     }
 }
