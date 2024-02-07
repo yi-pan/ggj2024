@@ -1,23 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GlassesGame : MonoBehaviour
 {
+    public GameObject uiCanvas;
     private bool isPlaying;
     public static GlassesGame instance;
     public GameObject bar_area;
     public GameObject key;
-    public float speed = 2f;
+    private float speed = 2f;
 
     public GameObject robot;
     public GameObject glasses;
 
-    private bool animPlayed = false;
+   
     private int count = 0;
 
     public void gameStart()
     {
+        uiCanvas.SetActive(true);
         robot.SetActive(true);
         instance = this;
         isPlaying = true;
@@ -46,7 +49,7 @@ public class GlassesGame : MonoBehaviour
         }
         if(count == 2)
         {
-            speed = 4F;
+            speed = 4f;
         }
         if(count == 3)
         {
@@ -77,6 +80,7 @@ public class GlassesGame : MonoBehaviour
 
     void gameEnd()
     {
+        uiCanvas.SetActive(false);
         key.SetActive(false);
         robot.SetActive(false);
         robot.GetComponent<ChangeMaterial>().changeArm = true;

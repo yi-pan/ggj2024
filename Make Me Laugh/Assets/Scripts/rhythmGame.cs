@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class RhythmGame : MonoBehaviour
 {
+    public GameObject game_hint;
+    public GameObject gameUI;
+    public GameObject ui_hint_icon;
+    public Sprite ui2;
+
     public AudioSource music;
     public bool startPlaying;
     public static RhythmGame instance;
+
     public AudioSource[] sounds;
     public AudioSource bass;
     public GameObject arrows;
@@ -29,23 +36,30 @@ public class RhythmGame : MonoBehaviour
     [SerializeField]
     private TMP_Text _miss;
 
-    private Vector3 arrowsPos;
     public bool inverseKeyCode = false;
     private int hit_count = 0;
     private int miss_count = 0;
     private ArrowDrop arrowDrop1;
     private ArrowDrop arrowDrop2;
 
+    private int missHintCount = 0;
+    private int hitHintCount = 0;
+
+
     public GameObject teach_dialogue;
 
     // Start is called before the first frame update
     void Start()
     {
+        game_hint.SetActive(false);
+        gameUI.SetActive(false);
         // PLAY CUTSCENE 01
         intoSubway();
+
         //cutscene_cam.enabled = true;
         //game_cam.enabled = false;
         instance = this;
+
         startPlaying = false;
         arrows.SetActive(false);
         gameCanvas.SetActive(false);
@@ -71,6 +85,7 @@ public class RhythmGame : MonoBehaviour
 
     public void gameStart()
     {
+        gameUI.SetActive(true);
         //cutscene_cam.enabled = false;
         //game_cam.enabled = true;
         inverseKeyCode = false;
@@ -108,17 +123,13 @@ public class RhythmGame : MonoBehaviour
         music.Play();
     }
 
-    public void changeScene()
-    {
-        Debug.Log("change scene");
-    }
-
     void gameEnd()
     {
         //foreach(GameObject npc in npcs)
         //{
         //    npc.GetComponent<NpcController>().StopCry();
         //}
+        gameUI.SetActive(false);
         startPlaying = false;
         if (bass.isPlaying)
         {
@@ -153,6 +164,8 @@ public class RhythmGame : MonoBehaviour
         _hit.text = "Good: " + hit_count;
         _miss.text = "Miss: " + miss_count;
 
+        
+
         // change pace
         if (inverseKeyCode)
         {
@@ -172,8 +185,16 @@ public class RhythmGame : MonoBehaviour
             {
                 arrowDrop2.unit = 200;
             }
-            
 
+            if (missHintCount > 5)
+            {
+                game_hint.SetActive(true);
+            }
+
+            if(hitHintCount > 5 & game_hint)
+            {
+                game_hint.SetActive(false);
+            }
             // make more npc cry gradually
             if (hit_count + miss_count == 11)
             {
@@ -221,13 +242,14 @@ public class RhythmGame : MonoBehaviour
             // HERE IS WHERE CHILD DIALOGUE GO; DIALOGUE FINISH -> INVERSE KEY
             if (hit_count == 10 | (hit_count + miss_count == 60))
             {
-                // child dialogue: "this is so boring! let's make some noise!"
                 inverseKeyCode = true;
                 // dialogue
                 arrowDrop1.unit = 0;
                 teach_dialogue.SetActive(true);
                 // bass stop
                 bass.Stop();
+                // arrow ui change
+                ui_hint_icon.GetComponent<Image>().overrideSprite = ui2;
             }
         }
 
@@ -243,6 +265,8 @@ public class RhythmGame : MonoBehaviour
     // arrow hit
     public void ArrowHit()
     {
+        hitHintCount++;
+        missHintCount = 0;
         hit_count++;
         // if key code is inversed, play a stupid sound effect
         if (inverseKeyCode)
@@ -263,6 +287,8 @@ public class RhythmGame : MonoBehaviour
     // arrow miss
     public void ArrowMiss()
     {
+        hitHintCount = 0;
+        missHintCount++;
         miss_count++;
         // if key code is not inversed, pause the bass if miss
         if (!inverseKeyCode)

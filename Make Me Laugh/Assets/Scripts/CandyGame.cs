@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CandyGame : MonoBehaviour
 {
+    public GameObject uiCanvas;
     public Camera game_cam;
 
     private int count = 0;
@@ -24,6 +25,7 @@ public class CandyGame : MonoBehaviour
 
     public void gameStart()
     {
+        uiCanvas.SetActive(true);
         green.SetActive(true);
         robot.SetActive(true);
         isPlaying = true;
@@ -77,6 +79,7 @@ public class CandyGame : MonoBehaviour
 
     void gameEnd()
     {
+        uiCanvas.SetActive(false);
         coin_robot_green.SetActive(true);
         coin_robot.SetActive(false);
         robot.SetActive(false);

@@ -5,8 +5,6 @@ using UnityEngine;
 public class GlassesGameBar : MonoBehaviour
 {
     public GameObject[] barAreas;
-
-    private bool canBePressed = false;
     public int count = 0;
 
     // Start is called before the first frame update
@@ -21,9 +19,8 @@ public class GlassesGameBar : MonoBehaviour
         {
             GlassesGame.instance.Miss();
         }
-        if (Input.GetKeyDown("space") | Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log(transform.localPosition);
             if (count == 0)
             {
                 if(transform.localPosition.x > 60 & transform.localPosition.x < 260)
