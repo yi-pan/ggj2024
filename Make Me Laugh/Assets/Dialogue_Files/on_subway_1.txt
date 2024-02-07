@@ -1,6 +1,6 @@
-<<Kid crying no-stop>>
+**Kid crying no-stop**
 character:... <<???Again???>>
 cry_kid:BORING BORING BORINGGGGGGG
 character:...
 cry_kid:Let's use my MIDI pad to make some music.
-*What can I do to entertain this kid? Try press the right pad to play some music.*
+character:<<What can I do to entertain this kid? Maybe I can press the right pad to play some music.>>

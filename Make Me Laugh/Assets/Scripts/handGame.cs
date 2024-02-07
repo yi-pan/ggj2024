@@ -25,6 +25,7 @@ public class ObjectSelection : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] audioClipArray;
     public GameObject hand;
+    public GameObject ui;
     public GameObject canvas;
     public GameObject briefcase;
     public GameObject ipad;
@@ -74,6 +75,7 @@ public class ObjectSelection : MonoBehaviour
         itemsOnFloor.SetActive(false);
         hand.SetActive(false);
         canvas.SetActive(false);
+        ui.SetActive(false);
 
         _elevScreen.text = "1"; // elev screen text
         changePerSecond = 1; // floor number change speed
@@ -103,6 +105,7 @@ public class ObjectSelection : MonoBehaviour
 
         hand.SetActive(true);
         canvas.SetActive(true);
+        ui.SetActive(true);
 
         // hide those between game panel and cam
         foreach(GameObject g in needToHide)
@@ -121,6 +124,7 @@ public class ObjectSelection : MonoBehaviour
 
         hand.SetActive(false);
         canvas.SetActive(false);
+        ui.SetActive(false);
     }
 
     void itemsDrop()
