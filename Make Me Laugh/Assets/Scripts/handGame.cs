@@ -152,8 +152,6 @@ public class ObjectSelection : MonoBehaviour
 
     void Update()
     {
-        
-
         // after elevator panel animation finished
         if (elevPanel.GetComponent<AnimationEvent>().animFinished) {
             // switch camera and activate hidden objects 
