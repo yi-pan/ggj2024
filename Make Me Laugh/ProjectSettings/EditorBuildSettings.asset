@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/restaurant.unity
     guid: d4470503fbb9519468d9aaa249f76a32
+  - enabled: 1
+    path: Assets/Scenes/ending.unity
+    guid: 64f4ac8d570129747be1be1f6df159a4
   m_configObjects: {}

@@ -10,7 +10,7 @@ public class GlassesGame : MonoBehaviour
     public static GlassesGame instance;
     public GameObject bar_area;
     public GameObject key;
-    private float speed = 2f;
+    private float speed = 4f;
 
     public GameObject robot;
     public GameObject glasses;
@@ -18,7 +18,9 @@ public class GlassesGame : MonoBehaviour
     public AudioSource glasses_break_audio;
    
     private int count = 0;
-
+    public Canvas game_canvas;
+    private float scale;
+   
     public void gameStart()
     {
         uiCanvas.SetActive(true);
@@ -26,6 +28,7 @@ public class GlassesGame : MonoBehaviour
         instance = this;
         isPlaying = true;
         robot.GetComponent<AnimationEvent>().animFinished = false;
+        scale = game_canvas.transform.localScale.x;
     }
 
 
@@ -34,7 +37,7 @@ public class GlassesGame : MonoBehaviour
     {
         if (isPlaying)
         {
-            key.transform.localPosition = key.transform.localPosition + new Vector3(speed, 0, 0);
+            key.transform.localPosition = key.transform.localPosition + new Vector3(100f*speed*scale, 0, 0) * Time.deltaTime;
         }
         //if (animPlayed)
         //{
@@ -46,11 +49,11 @@ public class GlassesGame : MonoBehaviour
         //}
         if(count == 1)
         {
-            speed = 3f;
+            speed = 5f;
         }
         if(count == 2)
         {
-            speed = 4f;
+            speed = 7f;
         }
         if(count == 3)
         {

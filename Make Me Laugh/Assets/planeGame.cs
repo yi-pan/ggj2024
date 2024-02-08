@@ -97,7 +97,6 @@ public class planeGame : MonoBehaviour
         robot_fnished.SetActive(false);
 
         // play first cutscene
-
         wakeUp();
         //gameStart();
     }
@@ -107,7 +106,7 @@ public class planeGame : MonoBehaviour
         if (character_cam.enabled)
         {
             character_cam.enabled = false;
-            game_cam.enabled = true;
+          game_cam.enabled = true;
         }
         else
         {
@@ -334,7 +333,7 @@ public class planeGame : MonoBehaviour
         coin_game.GetComponent<CoinGame>().gameStart();
     }
 
-   public void JuiceGameStart()
+    public void JuiceGameStart()
     {
         game_cam.enabled = true;
         character_cam.enabled = false;

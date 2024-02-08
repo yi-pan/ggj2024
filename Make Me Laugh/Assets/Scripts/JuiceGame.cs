@@ -62,7 +62,7 @@ public class JuiceGame : MonoBehaviour
                         slurp.Play();
 
                         clickCount++;
-                        juice.transform.localScale = juice.transform.localScale - new Vector3(0, 0.05f, 0);
+                        juice.transform.localScale = juice.transform.localScale - new Vector3(0.005f, 0.05f, 0.005f);
                         battery.transform.localScale = battery.transform.localScale + new Vector3(0.0085f, 0, 0);
                         battery.transform.localPosition = battery.transform.localPosition + new Vector3(-0.0047f, 0, 0);
                     }

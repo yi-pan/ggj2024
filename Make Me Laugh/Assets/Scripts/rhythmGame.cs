@@ -171,19 +171,15 @@ public class RhythmGame : MonoBehaviour
         {
             if(hit_count == 10)
             {
-                arrowDrop2.unit = 140;
+                arrowDrop2.unit = 180;
             }
             if(hit_count == 20)
             {
-                arrowDrop2.unit = 160;
-            }
-            if(hit_count == 30)
-            {
-                arrowDrop2.unit = 180;
-            }
-            if(hit_count == 50)
-            {
                 arrowDrop2.unit = 200;
+            }
+            if(hit_count == 40)
+            {
+                arrowDrop2.unit = 220;
             }
 
             if (missHintCount > 5)
@@ -203,14 +199,14 @@ public class RhythmGame : MonoBehaviour
             }
             if (hit_count + miss_count == 20)
             {
-                npcs[1].transform.localPosition = npcs[1].transform.localPosition - new Vector3(0.003f, 0, 0);
+                npcs[1].transform.position = npcs[1].transform.position - new Vector3(0.003f, 0, 0);
                 npcs[1].GetComponent<NpcController>().Cry();
                 cryEmoji[1].SetActive(true);
             }
             if (hit_count + miss_count == 30)
             {
-                npcs[2].transform.localPosition = npcs[2].transform.localPosition - new Vector3(0.006f, 0, 0);
-                npcs[3].transform.localPosition = npcs[3].transform.localPosition - new Vector3(0.004f, 0, 0);
+                npcs[2].transform.position = npcs[2].transform.position - new Vector3(0.006f, 0, 0);
+                npcs[3].transform.position = npcs[3].transform.position - new Vector3(0.005f, 0, 0);
                 npcs[2].GetComponent<NpcController>().Cry();
                 npcs[3].GetComponent<NpcController>().Cry();
                 cryEmoji[2].SetActive(true);
@@ -218,7 +214,7 @@ public class RhythmGame : MonoBehaviour
             }
             if (hit_count + miss_count == 40)
             {
-                npcs[4].transform.localPosition = npcs[4].transform.localPosition - new Vector3(0.002f, 0, 0);
+                npcs[4].transform.position = npcs[4].transform.position - new Vector3(0.002f, 0, 0);
                 npcs[4].GetComponent<NpcController>().Cry();
                 cryEmoji[4].SetActive(true);
                 npcs[5].GetComponent<NpcController>().Cry();

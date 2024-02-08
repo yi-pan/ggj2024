@@ -25,11 +25,11 @@ public class GlassesGameBar : MonoBehaviour
             {
                 if(transform.localPosition.x > 60 & transform.localPosition.x < 260)
                 {
+                    transform.GetComponent<Animation>().Play("glasses_game_key_pressed");
                     count++;
                     barAreas[0].SetActive(false);
                     barAreas[1].SetActive(true);
                     GlassesGame.instance.Hit();
-                    transform.GetComponent<Animation>().Play("glasses_game_key_pressed");
                 }
                 else
                 {
@@ -41,11 +41,11 @@ public class GlassesGameBar : MonoBehaviour
             {
                 if(transform.localPosition.x > 300 & transform.localPosition.x < 500)
                 {
+                    transform.GetComponent<Animation>().Play("glasses_game_key_pressed");
                     count++;
                     barAreas[1].SetActive(false);
                     barAreas[2].SetActive(true);
                     GlassesGame.instance.Hit();
-                    transform.GetComponent<Animation>().Play("glasses_game_key_pressed");
                 }
                 else
                 {
@@ -56,10 +56,10 @@ public class GlassesGameBar : MonoBehaviour
             {
                 if(transform.localPosition.x > -433 & transform.localPosition.x < -233)
                 {
+                    transform.GetComponent<Animation>().Play("glasses_game_key_pressed");
                     count++;
                     barAreas[2].SetActive(false);
                     GlassesGame.instance.Hit();
-                    transform.GetComponent<Animation>().Play("glasses_game_key_pressed");
                 }
                 else
                 {
