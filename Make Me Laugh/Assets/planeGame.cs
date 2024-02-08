@@ -119,12 +119,12 @@ public class planeGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
-        {
-            switchCamera();
-            robot_fnished.SetActive(true);
-            robot_fnished.GetComponent<Animation>().Play("fnished_robot_dance");
-        }
+        //if (Input.GetKeyDown("space"))
+        //{
+        //    switchCamera();
+        //    robot_fnished.SetActive(true);
+        //    robot_fnished.GetComponent<Animation>().Play("fnished_robot_dance");
+        //}
 
         if (startPlaying & !inGame)
         {
@@ -178,11 +178,20 @@ public class planeGame : MonoBehaviour
                     highlight = null;
                 }
             }
-
-            npc_candy.GetComponent<AudioSource>().volume = 0.4f;
-            npc_coin.GetComponent<AudioSource>().volume = 0.4f;
-            npc_glasses.GetComponent<AudioSource>().volume = 0.4f;
-            npc_juice.GetComponent<AudioSource>().volume = 0.4f;
+            if (!robot_fnished.GetComponent<Animation>().isPlaying)
+            {
+                npc_candy.GetComponent<AudioSource>().volume = 0.4f;
+                npc_coin.GetComponent<AudioSource>().volume = 0.4f;
+                npc_glasses.GetComponent<AudioSource>().volume = 0.4f;
+                npc_juice.GetComponent<AudioSource>().volume = 0.4f;
+            }
+            else
+            {
+                npc_candy.GetComponent<AudioSource>().volume = 0.1f;
+                npc_coin.GetComponent<AudioSource>().volume = 0.1f;
+                npc_glasses.GetComponent<AudioSource>().volume = 0.1f;
+                npc_juice.GetComponent<AudioSource>().volume = 0.1f;
+            }
         }
         else // in mini games
         {
@@ -222,9 +231,6 @@ public class planeGame : MonoBehaviour
         }
         if (juiceGameStart)
         {
-
-
-
             if (!juice.GetComponent<Animation>().isPlaying)
             {
                 juice_teach.SetActive(true);
