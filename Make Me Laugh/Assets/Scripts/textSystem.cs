@@ -86,7 +86,7 @@ public class textSystem : MonoBehaviour
 
         }
         //newSpawn.transform.SetParent(gameObject.transform);
-
+        newSpawn.transform.localScale = new Vector3(2, 2, 2);
         TMP_Text text = newSpawn.transform.GetChild(2).gameObject.GetComponent<TMP_Text>();
         text.text = thought;
         return newSpawn;
