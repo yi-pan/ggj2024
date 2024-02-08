@@ -1,7 +1,7 @@
-cry_kid:Sorry, could you please press the 6th floor for me? I could not reach it!
+cry_kid:Sorry, could you please press the 3rd floor for me? I could not reach it!
 *No one helps the kid. They all want to get to the top floor first.*
 character:...<<Why do I want to help this kid?...>>
 *Tears started streaming from the kid's eyes, they looked really upset and began to cry loudly*
 cry_kid:Plz…
-*I step forward to press the 6th floor, but the others put their hands on the panel to stop me.*
+*I step forward to press the 3rd floor, but the others put their hands on the panel to stop me.*
 character:<<Seems like I need to get rid of their hands first before pressing the button.>>

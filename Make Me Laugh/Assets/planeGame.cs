@@ -97,8 +97,9 @@ public class planeGame : MonoBehaviour
         robot_fnished.SetActive(false);
 
         // play first cutscene
-        wakeUp();
-        //gameStart();
+
+        // wakeUp();
+        gameStart();
     }
 
     void switchCamera()
@@ -118,6 +119,13 @@ public class planeGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("space"))
+        {
+            switchCamera();
+            robot_fnished.SetActive(true);
+            robot_fnished.GetComponent<Animation>().Play("fnished_robot_dance");
+        }
+
         if (startPlaying & !inGame)
         {
             cryEmoji.SetActive(true);

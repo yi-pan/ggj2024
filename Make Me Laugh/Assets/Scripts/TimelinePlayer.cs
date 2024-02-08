@@ -41,9 +41,19 @@ public class TimelinePlayer : MonoBehaviour
     {
         mind.SetActive(false);
     }
+
+    public void muteAudio(GameObject audio)
+    {
+        audio.SetActive(false);
+        audio.GetComponent<AudioSource>().Stop();
+        Debug.Log(audio);
+    }
+
     // Update is called once per frame
     void Update()
     {
         
     }
+    
+    
 }

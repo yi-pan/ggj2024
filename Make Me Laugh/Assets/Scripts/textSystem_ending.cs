@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Playables;
 
 public class textSystem_ending : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class textSystem_ending : MonoBehaviour
     GameObject[] text_history;
     public float spawn_friend_x;
     public float spawn_friend_y;
+
+    public AudioSource clickAudio;
+    public GameObject timeline;
 
     public float spawn_main_x;
     public float spawn_main_y;
@@ -54,7 +58,13 @@ public class textSystem_ending : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0) && current_text_index < text_dialogue.Length)
         {
             nextText();
-        } 
+            // This is where we call sound effect ?
+            clickAudio.Play();
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0) && current_text_index >= text_dialogue.Length)
+        {
+            timeline.GetComponent<PlayableDirector>().Play();
+        }
 
     }
 

@@ -23,6 +23,7 @@ public class CandyGame : MonoBehaviour
     public GameObject coin_robot;
     public GameObject coin_robot_green;
 
+
     public void gameStart()
     {
         uiCanvas.SetActive(true);

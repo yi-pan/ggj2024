@@ -16,10 +16,12 @@ public class ChangeMaterial : MonoBehaviour
     public Material body_material;
     public Material light_material;
 
+    private Vector3 position;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        position = arm.transform.localPosition + new Vector3(0, 0.017f, 0);
     }
 
     // Update is called once per frame
@@ -53,6 +55,6 @@ public class ChangeMaterial : MonoBehaviour
     {
        
         arm.transform.localRotation = Quaternion.Euler(180f, 0, 0);
-        arm.transform.localPosition = arm.transform.localPosition + new Vector3(0, 0.017f, 0);
+        arm.transform.localPosition = position;
     }
 }

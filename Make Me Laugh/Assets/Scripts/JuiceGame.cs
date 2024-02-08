@@ -25,7 +25,7 @@ public class JuiceGame : MonoBehaviour
     public Material orange;
     public Material green;
 
-    
+    public AudioSource slurp;
 
     public void gameStart()
     {
@@ -58,6 +58,9 @@ public class JuiceGame : MonoBehaviour
                     cup.transform.localScale = new Vector3(24f, 24f, 24f);
                     if (Input.GetMouseButtonDown(0))
                     {
+                        // play slurp sound effect
+                        slurp.Play();
+
                         clickCount++;
                         juice.transform.localScale = juice.transform.localScale - new Vector3(0, 0.05f, 0);
                         battery.transform.localScale = battery.transform.localScale + new Vector3(0.0085f, 0, 0);

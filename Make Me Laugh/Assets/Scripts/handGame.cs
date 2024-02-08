@@ -171,7 +171,7 @@ public class ObjectSelection : MonoBehaviour
             changeElevScreen();
 
             // elevator number grow 
-            if (Mathf.CeilToInt(elevFloor) <= 6)
+            if (Mathf.CeilToInt(elevFloor) <= 3)
             {
                 elevFloor = elevFloor + changePerSecond * Time.deltaTime;
             }
@@ -189,8 +189,8 @@ public class ObjectSelection : MonoBehaviour
             }
         }
 
-        // if elevator floor number reach 6, and door is closed, open the door
-        if (Mathf.CeilToInt(elevFloor) > 6 & !door_open)
+        // if elevator floor number reach 3, and door is closed, open the door
+        if (Mathf.CeilToInt(elevFloor) > 3 & !door_open)
         {
             door.GetComponent<Animation>().Play("door_open");
             door_open = true;

@@ -4168,7 +4168,7 @@ GameObject:
   - component: {fileID: 415291930}
   - component: {fileID: 415291929}
   m_Layer: 0
-  m_Name: 6thFloor_redCarpet
+  m_Name: 3rdFloor_redCarpet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7600,7 +7600,7 @@ GameObject:
   - component: {fileID: 677217267}
   - component: {fileID: 677217266}
   m_Layer: 0
-  m_Name: 6thFloor_wall
+  m_Name: 3rdFloor_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15577,7 +15577,7 @@ GameObject:
   - component: {fileID: 1233097976}
   - component: {fileID: 1233097975}
   m_Layer: 5
-  m_Name: Text_floor6
+  m_Name: Text_floor3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15631,8 +15631,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281484467
-  m_fontColor: {r: 0.7019608, g: 0.26666668, b: 0.19607845, a: 1}
+    rgba: 4284956220
+  m_fontColor: {r: 0.23529413, g: 0.24313727, b: 0.4039216, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -19221,7 +19221,7 @@ GameObject:
   - component: {fileID: 1680148076}
   - component: {fileID: 1680148075}
   m_Layer: 5
-  m_Name: Text_floor6 (1)
+  m_Name: Text_floor3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19266,7 +19266,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 183ff388a13a286458adf8f115dd35ca, type: 2}
   m_sharedMaterial: {fileID: -8118959826746274286, guid: 183ff388a13a286458adf8f115dd35ca, type: 2}
@@ -19275,8 +19275,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281484467
-  m_fontColor: {r: 0.7019608, g: 0.26666668, b: 0.19607845, a: 1}
+    rgba: 4284956477
+  m_fontColor: {r: 0.23918656, g: 0.2461042, b: 0.4056604, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -20570,7 +20570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8695203629583978612, guid: 35386349c98dc4fe781e1a7bc64a86c8, type: 3}
       propertyPath: m_text
-      value: I will stop you from pressing the sixth floor...
+      value: I will stop you from pressing any other floors...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22384,7 +22384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8695203629583978612, guid: 35386349c98dc4fe781e1a7bc64a86c8, type: 3}
       propertyPath: m_text
-      value: 6th floor...
+      value: 3rd floor...
       objectReference: {fileID: 0}
     - target: {fileID: 8695203629583978612, guid: 35386349c98dc4fe781e1a7bc64a86c8, type: 3}
       propertyPath: m_fontSize
@@ -22665,7 +22665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1964114084
 Transform:
   m_ObjectHideFlags: 0
