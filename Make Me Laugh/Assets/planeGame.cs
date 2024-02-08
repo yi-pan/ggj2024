@@ -98,8 +98,8 @@ public class planeGame : MonoBehaviour
 
         // play first cutscene
 
-        // wakeUp();
-        gameStart();
+        wakeUp();
+        //gameStart();
     }
 
     void switchCamera()
