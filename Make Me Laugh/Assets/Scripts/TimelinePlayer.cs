@@ -13,6 +13,15 @@ public class TimelinePlayer : MonoBehaviour
         director = GetComponent<PlayableDirector>();
     }
 
+    public void hide_cursor()
+    {
+        Cursor.visible = false;
+    }
+
+    public void show_cursor()
+    {
+        Cursor.visible = true;
+    }
     // start timeline
     public void StartTimeline()
     {

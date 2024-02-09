@@ -29,6 +29,7 @@ public class JuiceGame : MonoBehaviour
 
     public void gameStart()
     {
+        Cursor.visible = false;
         uiCanvas.SetActive(true);
         robot.SetActive(true);
         //isPlaying = true;
@@ -43,6 +44,7 @@ public class JuiceGame : MonoBehaviour
         {
             straw.GetComponent<AnimationEvent>().animFinished = false;
             isPlaying = true;
+            Cursor.visible = true;
         }
 
         // click on juice

@@ -85,6 +85,8 @@ public class RhythmGame : MonoBehaviour
 
     public void gameStart()
     {
+        Cursor.visible = false;
+
         gameUI.SetActive(true);
         //cutscene_cam.enabled = false;
         //game_cam.enabled = true;
@@ -99,8 +101,9 @@ public class RhythmGame : MonoBehaviour
 
     public void gameRestart()
     {
+        Cursor.visible = false;
         // reset button size and color
-        foreach(GameObject btn in btns)
+        foreach (GameObject btn in btns)
         {
             btn.GetComponent<RhythmButtonController>().Reset();
         }
@@ -238,6 +241,7 @@ public class RhythmGame : MonoBehaviour
             // HERE IS WHERE CHILD DIALOGUE GO; DIALOGUE FINISH -> INVERSE KEY
             if (hit_count == 10 | (hit_count + miss_count == 60))
             {
+                Cursor.visible = true;
                 inverseKeyCode = true;
                 // dialogue
                 arrowDrop1.unit = 0;

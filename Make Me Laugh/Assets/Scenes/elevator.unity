@@ -6112,6 +6112,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 561385325}
+          m_TargetAssemblyTypeName: TimelinePlayer, Assembly-CSharp
+          m_MethodName: show_cursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 561385325}
@@ -6121,6 +6133,18 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 291165691}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 561385325}
+          m_TargetAssemblyTypeName: TimelinePlayer, Assembly-CSharp
+          m_MethodName: hide_cursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -9124,6 +9148,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 2703997891681989817, guid: e2f824aec2d8b1d4fa0de074526e5039, type: 2}
     value: {fileID: 766474969}
+  - key: {fileID: 799996723250886026, guid: e2f824aec2d8b1d4fa0de074526e5039, type: 2}
+    value: {fileID: 987687568}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &768372760
@@ -9174,6 +9200,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 39c4a1f5abc274258b98536ab1b7e1bb, type: 2}
     - {fileID: 11400000, guid: 3238df8bc61e8463b90f7d01bb1d17dd, type: 2}
     - {fileID: 11400000, guid: 9dc7a574d8c91482c90bbcdf689e6606, type: 2}
+    - {fileID: 11400000, guid: a068c11e38006cb4f999ff28cc05ffbe, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -9184,6 +9211,18 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 563578057}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 768372761}
+          m_TargetAssemblyTypeName: TimelinePlayer, Assembly-CSharp
+          m_MethodName: show_cursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -9304,6 +9343,20 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 658155684}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 768372761}
+          m_TargetAssemblyTypeName: TimelinePlayer, Assembly-CSharp
+          m_MethodName: hide_cursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 

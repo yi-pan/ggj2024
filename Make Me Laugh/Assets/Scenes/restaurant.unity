@@ -526,6 +526,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: c0a913b3484bfbd4d8a0fc1b9c111350, type: 2}
     - {fileID: 11400000, guid: 334c89d9f1fa203488e5f1e12560d5a6, type: 2}
+    - {fileID: 11400000, guid: a068c11e38006cb4f999ff28cc05ffbe, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -565,6 +566,20 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: ending
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 89129350}
+          m_TargetAssemblyTypeName: TimelinePlayer, Assembly-CSharp
+          m_MethodName: hide_cursor
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!114 &89129350

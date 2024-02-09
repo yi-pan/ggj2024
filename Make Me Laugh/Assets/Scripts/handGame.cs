@@ -112,6 +112,8 @@ public class ObjectSelection : MonoBehaviour
         {
             g.SetActive(false);
         }
+
+        Cursor.visible = true;
     }
 
     void gameEnd()
@@ -125,6 +127,8 @@ public class ObjectSelection : MonoBehaviour
         hand.SetActive(false);
         canvas.SetActive(false);
         ui.SetActive(false);
+
+        Cursor.visible = false;
     }
 
     void itemsDrop()
@@ -208,6 +212,7 @@ public class ObjectSelection : MonoBehaviour
         {
             // play a success visual effect???
             _success.gameObject.SetActive(true);
+            success_count++;
             gameover = true;
             gameEnd();
         }
